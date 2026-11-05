@@ -1,0 +1,1181 @@
+{
+  "version": "1.5.0",
+  "generated_at": "2026-10-25T10:11:56.042510+00:00",
+  "evaluation_title": "料金・公開仕様に基づく独自コスパ評価",
+  "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+  "scoring_rule_version": "2026-10-tier-v1",
+  "rank_boundaries": {
+    "S": "90点以上",
+    "A": "75点以上 90点未満",
+    "B": "60点以上 75点未満",
+    "C": "60点未満",
+    "pending": "— (4軸いずれかの情報不足・未確認・公式資料間食い違いのため評価保留)"
+  },
+  "disclaimer": "本ランク・評価は作者独自のルール（2026-10-tier-v1）に基づく試算であり、第三者の公式推奨・認定ではありません。支払負担は公式表示価格（税・手数料別）を指定為替で換算した90日概算であり、実際の請求額とは異なる場合があります。",
+  "exchange_rate_used": 155.0,
+  "sources": [
+    "https://opencode.ai/go",
+    "https://opencode.ai/v2/docs/console/go/",
+    "https://opencode.ai/v2/docs/console/billing/",
+    "https://opencode.ai/docs",
+    "https://opencode.ai/docs/cli",
+    "https://opencode.ai/docs/ide",
+    "https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-copilot/about-billing-for-github-copilot",
+    "https://docs.github.com/en/copilot/about-github-copilot/subscription-plans-for-github-copilot",
+    "https://docs.github.com/en/copilot/how-tos/copilot-in-your-ide/use-copilot-agents/use-agent-mode",
+    "https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/billing-and-usage/individuals/billing",
+    "https://docs.z.ai/llms.txt",
+    "https://docs.z.ai/devpack/overview.md",
+    "https://docs.z.ai/devpack/usage-policy.md",
+    "https://docs.z.ai/devpack/faq.md",
+    "https://docs.z.ai/devpack/tool/others.md",
+    "https://docs.z.ai/devpack/notice/usage-revision.md",
+    "https://cursor.com/help/account-and-billing/pricing",
+    "https://cursor.com/docs/agent/overview.md",
+    "https://gemini.google/subscriptions/",
+    "https://antigravity.google/docs/getting-started?tab=cli",
+    "https://antigravity.google/docs/plans",
+    "https://claude.com/pricing",
+    "https://code.claude.com/docs/en/overview.md",
+    "https://code.claude.com/docs/en/authentication.md",
+    "https://code.claude.com/docs/en/vs-code.md",
+    "https://code.claude.com/docs/en/jetbrains.md",
+    "https://code.claude.com/docs/en/errors.md",
+    "https://code.claude.com/docs/en/statusline.md",
+    "https://learn.chatgpt.com/docs/pricing.md",
+    "https://chatgpt.com/pricing/",
+    "https://learn.chatgpt.com/docs/ide.md",
+    "https://learn.chatgpt.com/docs/cli.md",
+    "https://raw.githubusercontent.com/openai/codex/main/README.md",
+    "https://windsurf.com/pricing",
+    "https://docs.windsurf.com/windsurf/accounts/quota",
+    "https://docs.windsurf.com/windsurf/cascade/cascade.md",
+    "https://docs.windsurf.com/windsurf/terminal.md",
+    "https://www.kimi.com/en/help/membership/membership-pricing",
+    "https://www.kimi.com/code/docs/en/kimi-code/membership.html",
+    "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/getting-started.html",
+    "https://www.kimi.com/code/docs/en/kimi-code-for-vscode/getting-started.html"
+  ],
+  "plans": [
+    {
+      "plan_id": "opencode-go",
+      "plan_name": "OpenCode Go",
+      "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+      "rank": "A",
+      "is_pending": false,
+      "total_score": 76.15,
+      "cost_90d_yen": 4650.0,
+      "campaign_status": "none",
+      "scores": {
+        "payment": {
+          "score": 24.15,
+          "max": 35.0,
+          "cost_90d_yen": 4650.0,
+          "note": "公式表示価格（税・手数料別）を指定為替で換算した90日概算。実際の請求額とは異なる場合があります。"
+        },
+        "quota": {
+          "score": 20.0,
+          "max": 30.0,
+          "status": "quantitative_limited",
+          "label": null,
+          "note": "月間ドル建て上限（Kimi K2.7 Code・MiniMax M3・Qwen3.7 Plus・GLM-5.3-Flash 各$60、DeepSeek V4.1 Flash $80等）および5時間20%・週次50%・月次100%の定量枠が公式公表されており20点。"
+        },
+        "fit": {
+          "score": 25.0,
+          "max": 25.0,
+          "features": {
+            "autonomous_agent": "supported",
+            "ide_integration": "supported",
+            "execution_support": "supported"
+          },
+          "exclusions": [],
+          "note": "公式資料で確認できる機能の有無の評価であり、生成コードの品質評価ではありません"
+        },
+        "continuity": {
+          "score": 7.0,
+          "max": 10.0,
+          "rule": "short_rolling_with_limits_or_no_fallback",
+          "reason": "5時間単位のローリング回復だが週次50%・月次100%の上限が同時適用され、上限到達時はリセット待機またはExtra usageクレジット従量課金となるため7点。",
+          "continued_features": []
+        }
+      },
+      "budget": {
+        "is_over_budget_90d": false,
+        "cost_90d_yen": 4650.0,
+        "upfront_payment_yen": null,
+        "minimum_total_yen": null,
+        "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
+      },
+      "pending_reasons": [],
+      "campaign": {
+        "status": "none",
+        "applied": null
+      },
+      "history": [],
+      "source_urls": [
+        "https://opencode.ai/go",
+        "https://opencode.ai/v2/docs/console/go/",
+        "https://opencode.ai/v2/docs/console/billing/",
+        "https://opencode.ai/docs",
+        "https://opencode.ai/docs/cli",
+        "https://opencode.ai/docs/ide"
+      ],
+      "currency": "USD",
+      "price_usd": 10.0,
+      "price_jpy": null,
+      "verification_records": {
+        "target_plan_name": "OpenCode Go",
+        "fetched_at": "2026-10-21T02:23:00Z",
+        "currency_basis": "USD表示 ($10 / month)",
+        "quotes": {
+          "payment": "Plan: Go | Price: $10/month (https://opencode.ai/go, https://opencode.ai/v2/docs/console/go/)",
+          "quota": "Usage limits are defined as monthly dollar amounts... 5-hour — 20% of the monthly limit; weekly — 50%; and monthly — 100%. Kimi K2.7 Code $60, MiniMax M3 $60, Qwen3.7 Plus $60, GLM-5.3-Flash $60, DeepSeek V4.1 Flash $80 (https://opencode.ai/go, https://opencode.ai/v2/docs/console/billing/)",
+          "fit": "OpenCode is an open source AI coding agent. It’s available as a terminal-based interface, desktop app, or IDE extension... OpenCode integrates with VS Code, Cursor, or any IDE that supports a terminal (https://opencode.ai/docs, https://opencode.ai/docs/ide)",
+          "continuity": "20% of the monthly allowance per 5 hours, 50% per week, and 100% per month... Turn on Extra usage on the Overview credits card to pay from credits once a Go limit is reached. (https://opencode.ai/v2/docs/console/billing/)"
+        }
+      },
+      "work_capacity": {
+        "hours_summary": "利用枠の詳細は未確認",
+        "cycle_type": "monthly",
+        "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+      },
+      "verified_at": "2026-10-21T02:23:00Z",
+      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "campaign_evaluation": null
+    },
+    {
+      "plan_id": "github-copilot",
+      "plan_name": "GitHub Copilot Pro",
+      "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+      "rank": "B",
+      "is_pending": false,
+      "total_score": 71.15,
+      "cost_90d_yen": 4650.0,
+      "campaign_status": "none",
+      "scores": {
+        "payment": {
+          "score": 24.15,
+          "max": 35.0,
+          "cost_90d_yen": 4650.0,
+          "note": "公式表示価格（税・手数料別）を指定為替で換算した90日概算。実際の請求額とは異なる場合があります。"
+        },
+        "quota": {
+          "score": 20.0,
+          "max": 30.0,
+          "status": "quantitative_limited",
+          "label": null,
+          "note": "コード補完無制限。エージェント等の対象機能は月間1,500 AIクレジットの定量枠が公表されており20点（※AIクレジットは実行回数ではありません）。"
+        },
+        "fit": {
+          "score": 25.0,
+          "max": 25.0,
+          "features": {
+            "autonomous_agent": "supported",
+            "ide_integration": "supported",
+            "execution_support": "supported"
+          },
+          "exclusions": [],
+          "note": "公式資料で確認できる機能の有無の評価であり、生成コードの品質評価ではありません"
+        },
+        "continuity": {
+          "score": 2.0,
+          "max": 10.0,
+          "rule": "monthly_quota_exhaustion",
+          "reason": "クレジット枯渇時は追加購入なしではクレジット対象機能（Agent mode等）が翌月1日00:00 UTCまで停止するため2点（コード補完は無制限継続）。",
+          "continued_features": [
+            "コード補完 (Inline suggestions)",
+            "Next edit suggestions"
+          ]
+        }
+      },
+      "budget": {
+        "is_over_budget_90d": false,
+        "cost_90d_yen": 4650.0,
+        "upfront_payment_yen": null,
+        "minimum_total_yen": null,
+        "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
+      },
+      "pending_reasons": [],
+      "campaign": {
+        "status": "none",
+        "applied": null
+      },
+      "history": [],
+      "source_urls": [
+        "https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-copilot/about-billing-for-github-copilot",
+        "https://docs.github.com/en/copilot/about-github-copilot/subscription-plans-for-github-copilot",
+        "https://docs.github.com/en/copilot/how-tos/copilot-in-your-ide/use-copilot-agents/use-agent-mode",
+        "https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/billing-and-usage/individuals/billing"
+      ],
+      "currency": "USD",
+      "price_usd": 10.0,
+      "price_jpy": null,
+      "verification_records": {
+        "target_plan_name": "GitHub Copilot Pro",
+        "fetched_at": "2026-10-21T02:20:00Z",
+        "currency_basis": "USD表示 ($10 USD per calendar month)",
+        "quotes": {
+          "payment": "Personal accounts Copilot Pro: $10 USD per calendar month",
+          "quota": "Copilot Pro: Base 1,000, Flex 500, Total 1,500 monthly AI credits",
+          "fit": "複数ファイルの自律的編集・差分適用に対応 (decides which files to change, makes the edits) / VS Code, Visual Studio, JetBrains IDEs等の主要エディタ直接統合に対応 / タスク完了まで必要なコマンドを実行・反復する機能をサポート (runs commands as needed)",
+          "continuity": "毎月1日 00:00:00 UTC リセット固定 / 繰越不可 (未使用分消滅) / 枯渇時: 差額アップグレード / 従量課金追加予算設定 / 翌月1日00:00 UTCリセット待機"
+        }
+      },
+      "work_capacity": {
+        "hours_summary": "利用枠の詳細は未確認",
+        "cycle_type": "monthly",
+        "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+      },
+      "verified_at": "2026-10-21T02:20:00Z",
+      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "campaign_evaluation": {
+        "plan_id": "github-copilot",
+        "plan_name": "GitHub Copilot Pro",
+        "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+        "rank": "B",
+        "is_pending": false,
+        "total_score": 71.15,
+        "cost_90d_yen": 4650.0,
+        "campaign_status": "unverified_skipped",
+        "scores": {
+          "payment": {
+            "score": 24.15,
+            "max": 35.0,
+            "cost_90d_yen": 4650.0,
+            "note": "公式表示価格（税・手数料別）を指定為替で換算した90日概算。実際の請求額とは異なる場合があります。"
+          },
+          "quota": {
+            "score": 20.0,
+            "max": 30.0,
+            "status": "quantitative_limited",
+            "label": null,
+            "note": "コード補完無制限。エージェント等の対象機能は月間1,500 AIクレジットの定量枠が公表されており20点（※AIクレジットは実行回数ではありません）。"
+          },
+          "fit": {
+            "score": 25.0,
+            "max": 25.0,
+            "features": {
+              "autonomous_agent": "supported",
+              "ide_integration": "supported",
+              "execution_support": "supported"
+            },
+            "exclusions": [],
+            "note": "公式資料で確認できる機能の有無の評価であり、生成コードの品質評価ではありません"
+          },
+          "continuity": {
+            "score": 2.0,
+            "max": 10.0,
+            "rule": "monthly_quota_exhaustion",
+            "reason": "クレジット枯渇時は追加購入なしではクレジット対象機能（Agent mode等）が翌月1日00:00 UTCまで停止するため2点（コード補完は無制限継続）。",
+            "continued_features": [
+              "コード補完 (Inline suggestions)",
+              "Next edit suggestions"
+            ]
+          }
+        },
+        "budget": {
+          "is_over_budget_90d": false,
+          "cost_90d_yen": 4650.0,
+          "upfront_payment_yen": null,
+          "minimum_total_yen": null,
+          "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
+        },
+        "pending_reasons": [],
+        "campaign": {
+          "status": "unverified_skipped",
+          "applied": null
+        },
+        "history": [],
+        "source_urls": [
+          "https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-copilot/about-billing-for-github-copilot",
+          "https://docs.github.com/en/copilot/about-github-copilot/subscription-plans-for-github-copilot",
+          "https://docs.github.com/en/copilot/how-tos/copilot-in-your-ide/use-copilot-agents/use-agent-mode",
+          "https://docs.github.com/en/enterprise-cloud@latest/copilot/concepts/billing-and-usage/individuals/billing"
+        ],
+        "currency": "USD",
+        "price_usd": 10.0,
+        "price_jpy": null,
+        "verification_records": {
+          "target_plan_name": "GitHub Copilot Pro",
+          "fetched_at": "2026-10-21T02:20:00Z",
+          "currency_basis": "USD表示 ($10 USD per calendar month)",
+          "quotes": {
+            "payment": "Personal accounts Copilot Pro: $10 USD per calendar month",
+            "quota": "Copilot Pro: Base 1,000, Flex 500, Total 1,500 monthly AI credits",
+            "fit": "複数ファイルの自律的編集・差分適用に対応 (decides which files to change, makes the edits) / VS Code, Visual Studio, JetBrains IDEs等の主要エディタ直接統合に対応 / タスク完了まで必要なコマンドを実行・反復する機能をサポート (runs commands as needed)",
+            "continuity": "毎月1日 00:00:00 UTC リセット固定 / 繰越不可 (未使用分消滅) / 枯渇時: 差額アップグレード / 従量課金追加予算設定 / 翌月1日00:00 UTCリセット待機"
+          }
+        },
+        "work_capacity": {
+          "hours_summary": "利用枠の詳細は未確認",
+          "cycle_type": "monthly",
+          "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+        },
+        "verified_at": "2026-10-21T02:20:00Z",
+        "scored_at": "2026-10-25T10:11:56.042510+00:00"
+      }
+    },
+    {
+      "plan_id": "zai-glm-coding",
+      "plan_name": "GLM Coding Plan (Lite)",
+      "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+      "rank": "B",
+      "is_pending": false,
+      "total_score": 67.47,
+      "cost_90d_yen": 8370.0,
+      "campaign_status": "none",
+      "scores": {
+        "payment": {
+          "score": 15.469999999999999,
+          "max": 35.0,
+          "cost_90d_yen": 8370.0,
+          "note": "公式表示価格（税・手数料別）を指定為替で換算した90日概算。実際の請求額とは異なる場合があります。"
+        },
+        "quota": {
+          "score": 20.0,
+          "max": 30.0,
+          "status": "quantitative_limited",
+          "label": null,
+          "note": "Liteプランは5時間あたり2,000クレジット・週間10,000クレジット（GLM-5.3換算 週48〜97Mトークン）の定量上限が公式公表されており20点。"
+        },
+        "fit": {
+          "score": 25.0,
+          "max": 25.0,
+          "features": {
+            "autonomous_agent": "supported",
+            "ide_integration": "supported",
+            "execution_support": "supported"
+          },
+          "exclusions": [],
+          "note": "公式資料で確認できる機能の有無の評価であり、生成コードの品質評価ではありません"
+        },
+        "continuity": {
+          "score": 7.0,
+          "max": 10.0,
+          "rule": "short_rolling_with_limits_or_no_fallback",
+          "reason": "消費から5時間後に動的回復する短時間リセット制だが、7日周期の週間クレジット上限（10,000 credits）が同時適用され無制限代替枠はないため7点。",
+          "continued_features": []
+        }
+      },
+      "budget": {
+        "is_over_budget_90d": false,
+        "cost_90d_yen": 8370.0,
+        "upfront_payment_yen": null,
+        "minimum_total_yen": null,
+        "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
+      },
+      "pending_reasons": [],
+      "campaign": {
+        "status": "none",
+        "applied": null
+      },
+      "history": [],
+      "source_urls": [
+        "https://docs.z.ai/llms.txt",
+        "https://docs.z.ai/devpack/overview.md",
+        "https://docs.z.ai/devpack/usage-policy.md",
+        "https://docs.z.ai/devpack/faq.md",
+        "https://docs.z.ai/devpack/tool/others.md",
+        "https://docs.z.ai/devpack/notice/usage-revision.md"
+      ],
+      "currency": "USD",
+      "price_usd": 18.0,
+      "price_jpy": null,
+      "verification_records": {
+        "target_plan_name": "GLM Coding Plan (Lite)",
+        "fetched_at": "2026-10-21T02:32:00Z",
+        "currency_basis": "USD表示 (Starting at 18 USD per month)",
+        "quotes": {
+          "payment": "Plans from $18/month (https://docs.z.ai/llms.txt) / Starting at just 18 USD per month, with Pro and Max plans designed for high-frequency, complex projects. (https://docs.z.ai/devpack/overview.md)",
+          "quota": "Each plan is subject to both a 5-hour usage limit and a weekly usage limit. | Plan Type: Lite | 5-Hour Credits: 2,000 | Weekly Credits: 10,000 | Estimated Token Allowance: Lite 48–97M tokens/week for GLM-5.3 (https://docs.z.ai/devpack/overview.md)",
+          "fit": "The plan can be applied to agent tools such as ZCode, Claude Code, Codex, OpenCode, AutoClaw, and OpenClaw... Claude for IDE (VSCode and JetBrains), Cursor, Cline, Roo Code (https://docs.z.ai/devpack/overview.md, https://docs.z.ai/devpack/tool/others.md)",
+          "continuity": "5-hour credits: Dynamically refreshed; credit quota resets 5 hours after consumption. Weekly credits: Activated upon subscription; resets every 7 days. (https://docs.z.ai/devpack/overview.md)"
+        }
+      },
+      "work_capacity": {
+        "hours_summary": "利用枠の詳細は未確認",
+        "cycle_type": "weekly",
+        "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+      },
+      "verified_at": "2026-10-21T02:32:00Z",
+      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "campaign_evaluation": null
+    },
+    {
+      "plan_id": "cursor-plus",
+      "plan_name": "Cursor Plus (The X Subscription)",
+      "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+      "rank": "B",
+      "is_pending": false,
+      "total_score": 64.32,
+      "cost_90d_yen": 3720.0,
+      "campaign_status": "none",
+      "scores": {
+        "payment": {
+          "score": 26.32,
+          "max": 35.0,
+          "cost_90d_yen": 3720.0,
+          "note": "公式表示価格（税・手数料別）を指定為替で換算した90日概算。実際の請求額とは異なる場合があります。"
+        },
+        "quota": {
+          "score": 10.0,
+          "max": 30.0,
+          "status": "dynamic_fair_use",
+          "label": "週次プール(数値非公表)",
+          "note": "全有料プランに Cursor モデル用の週次プール（weekly pool）が付与されると公式明記だが、プールの具体的な数値は非公表のため動的制限(dynamic_fair_use)の10点。利用枠の対象は Cursor 独自モデル(Grok / Composer)のみで、Claude / GPT / Gemini などサードパーティモデルは Plus の利用枠に含まれない。"
+        },
+        "fit": {
+          "score": 25.0,
+          "max": 25.0,
+          "features": {
+            "autonomous_agent": "supported",
+            "ide_integration": "supported",
+            "execution_support": "supported"
+          },
+          "exclusions": [
+            "Auto",
+            "Cloud Agents（エディター内Agentとは別機能）",
+            "Automations",
+            "Bugbot",
+            "Origin",
+            "サードパーティモデル（Claude / GPT / Gemini など）"
+          ],
+          "note": "公式資料で確認できる機能の有無の評価であり、生成コードの品質評価ではありません。Plus に含まれるのはエディター内の Agent(Cursor独自モデルで動作)で、autonomous_agent は supported とした。Plus で除外されているのは Auto / Cloud Agents / Automations / Bugbot / Origin / サードパーティモデルで、Cloud Agents はエディター内 Agent とは別機能。 Grok Build(ターミナル)も同じ契約・同じ利用枠で使える。"
+        },
+        "continuity": {
+          "score": 3.0,
+          "max": 10.0,
+          "rule": "weekly_reset",
+          "reason": "公式に『Every paid plan includes a weekly pool of usage』と明記され、週次でプールが更新されるため週次リセット3点。",
+          "continued_features": []
+        }
+      },
+      "budget": {
+        "is_over_budget_90d": false,
+        "cost_90d_yen": 4185.0,
+        "upfront_payment_yen": null,
+        "minimum_total_yen": null,
+        "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
+      },
+      "pending_reasons": [],
+      "campaign": {
+        "status": "none",
+        "applied": null
+      },
+      "history": [],
+      "source_urls": [
+        "https://cursor.com/help/account-and-billing/pricing",
+        "https://cursor.com/docs/agent/overview.md"
+      ],
+      "currency": "USD",
+      "price_usd": 8.0,
+      "price_jpy": null,
+      "verification_records": {
+        "target_plan_name": "Cursor Plus (The X Subscription)",
+        "fetched_at": "2026-10-22T10:13:00Z",
+        "currency_basis": "USD表示 (Plus $8/mo)",
+        "quotes": {
+          "payment": "Plan Price Included usage Free $0 Limited Plus $8/mo Base Premium $30/mo 4x Plus Super $100/mo 15x Plus Ultra $200/mo 50x Plus (https://cursor.com/help/account-and-billing/pricing)",
+          "quota": "Every paid plan includes a weekly pool of usage for Cursor models (Grok 4.7, Grok 4.6, Grok 4.5, and Composer 2.5), shared across Cursor and Grok. (https://cursor.com/help/account-and-billing/pricing)",
+          "fit": "Agent is Cursor's assistant that can complete complex coding tasks independently, run terminal commands, and edit code. Access in sidepane with Cmd+I. (https://cursor.com/docs/agent/overview.md) / Plus runs those models at fixed settings (Fast off, medium effort) without Auto, Cloud Agents, Automations, Bugbot, Origin, or third-party models. Premium and above add all of those, with third-party models at API list price paid from prepaid credit. (https://cursor.com/help/account-and-billing/pricing)",
+          "continuity": "Every paid plan includes a weekly pool of usage for Cursor models... shared across Cursor and Grok. (https://cursor.com/help/account-and-billing/pricing)"
+        }
+      },
+      "work_capacity": {
+        "hours_summary": "利用枠の詳細は未確認",
+        "cycle_type": "weekly",
+        "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+      },
+      "verified_at": "2026-10-22T10:13:00Z",
+      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "campaign_evaluation": null
+    },
+    {
+      "plan_id": "google-ai-pro",
+      "plan_name": "Google AI Pro",
+      "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+      "rank": "C",
+      "is_pending": false,
+      "total_score": 56.7,
+      "cost_90d_yen": 8700.0,
+      "campaign_status": "none",
+      "scores": {
+        "payment": {
+          "score": 14.700000000000001,
+          "max": 35.0,
+          "cost_90d_yen": 8700.0,
+          "note": "公式表示価格（税・手数料別）を指定為替で換算した90日概算。実際の請求額とは異なる場合があります。"
+        },
+        "quota": {
+          "score": 10.0,
+          "max": 30.0,
+          "status": "dynamic_fair_use",
+          "label": "5時間更新枠＋週次上限(数値非公表)",
+          "note": "公式Plansページに、Google AI Proは『5時間ごとに更新される高い枠(週次上限に達するまで)』と『より高い週次上限』が付与されると記載。具体的な数値は非公表で、レート制限はエージェントの作業量に連動して変動するため動的制限(dynamic_fair_use)の10点。第三者モデルはUltraのみで、ProはGeminiモデル中心。"
+        },
+        "fit": {
+          "score": 25.0,
+          "max": 25.0,
+          "features": {
+            "autonomous_agent": "supported",
+            "ide_integration": "supported",
+            "execution_support": "supported"
+          },
+          "exclusions": [],
+          "note": "公式資料で確認できる機能の有無の評価であり、生成コードの品質評価ではありません"
+        },
+        "continuity": {
+          "score": 7.0,
+          "max": 10.0,
+          "rule": "short_rolling_with_limits_or_no_fallback",
+          "reason": "5時間ごとに更新されるが週次上限があり、上限後はAIクレジットの追加購入(超過利用)で継続する形のため7点。",
+          "continued_features": []
+        }
+      },
+      "budget": {
+        "is_over_budget_90d": false,
+        "cost_90d_yen": 8700.0,
+        "upfront_payment_yen": null,
+        "minimum_total_yen": null,
+        "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
+      },
+      "pending_reasons": [],
+      "campaign": {
+        "status": "none",
+        "applied": null
+      },
+      "history": [],
+      "source_urls": [
+        "https://gemini.google/subscriptions/",
+        "https://antigravity.google/docs/getting-started?tab=cli",
+        "https://antigravity.google/docs/plans"
+      ],
+      "currency": "JPY",
+      "price_usd": 19.99,
+      "price_jpy": 2900.0,
+      "verification_records": {
+        "target_plan_name": "Google AI Pro",
+        "fetched_at": "2026-10-22T10:16:00Z",
+        "currency_basis": "日本向け価格 (￥2,900 JPY / 月)",
+        "quotes": {
+          "payment": "Google AI Pro 1 生産性と創造性を高めるパワフルな新機能を より多く 利用できます。 ￥ 2,900 JPY / 月 無料版の 4 倍の使用量上限 (https://gemini.google/subscriptions/)",
+          "quota": "Google AI Pro: A high, generous quota, refreshed every five hours until the weekly limit is reached / A higher weekly rate limit / the rate limits correlate with the amount of work done by the agent (https://antigravity.google/docs/plans)",
+          "fit": "The agent indexes the workspace, develops an implementation plan, and displays proposed changes for your review. / Press Y to confirm and execute `python3 main.py` / /goal: Runs the task autonomously until completion / extensions for VS Code, JetBrains, Visual Studio, Zed, Xcode (https://antigravity.google/docs/getting-started?tab=cli)",
+          "continuity": "Google AI Pro: refreshed every five hours until the weekly limit is reached / Users on Google AI Pro or Ultra plans can use purchased AI credits for additional overage usage above the baseline quota (https://antigravity.google/docs/plans)"
+        }
+      },
+      "work_capacity": {
+        "hours_summary": "利用枠の詳細は未確認",
+        "cycle_type": "rolling_5h",
+        "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+      },
+      "verified_at": "2026-10-22T10:16:00Z",
+      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "campaign_evaluation": {
+        "plan_id": "google-ai-pro",
+        "plan_name": "Google AI Pro",
+        "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+        "rank": "B",
+        "is_pending": false,
+        "total_score": 63.46666666666667,
+        "cost_90d_yen": 5800.0,
+        "campaign_status": "applied",
+        "scores": {
+          "payment": {
+            "score": 21.466666666666665,
+            "max": 35.0,
+            "cost_90d_yen": 5800.0,
+            "note": "公式表示価格（税・手数料別）を指定為替で換算した90日概算。実際の請求額とは異なる場合があります。"
+          },
+          "quota": {
+            "score": 10.0,
+            "max": 30.0,
+            "status": "dynamic_fair_use",
+            "label": "5時間更新枠＋週次上限(数値非公表)",
+            "note": "公式Plansページに、Google AI Proは『5時間ごとに更新される高い枠(週次上限に達するまで)』と『より高い週次上限』が付与されると記載。具体的な数値は非公表で、レート制限はエージェントの作業量に連動して変動するため動的制限(dynamic_fair_use)の10点。第三者モデルはUltraのみで、ProはGeminiモデル中心。"
+          },
+          "fit": {
+            "score": 25.0,
+            "max": 25.0,
+            "features": {
+              "autonomous_agent": "supported",
+              "ide_integration": "supported",
+              "execution_support": "supported"
+            },
+            "exclusions": [],
+            "note": "公式資料で確認できる機能の有無の評価であり、生成コードの品質評価ではありません"
+          },
+          "continuity": {
+            "score": 7.0,
+            "max": 10.0,
+            "rule": "short_rolling_with_limits_or_no_fallback",
+            "reason": "5時間ごとに更新されるが週次上限があり、上限後はAIクレジットの追加購入(超過利用)で継続する形のため7点。",
+            "continued_features": []
+          }
+        },
+        "budget": {
+          "is_over_budget_90d": false,
+          "cost_90d_yen": 5800.0,
+          "upfront_payment_yen": null,
+          "minimum_total_yen": null,
+          "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
+        },
+        "pending_reasons": [],
+        "campaign": {
+          "status": "applied",
+          "applied": {
+            "campaign_id": "google-ai-pro-1m-trial",
+            "title": "Google AI Pro 1か月間 ￥0 トライアル",
+            "cost_90d_yen": 5800.0,
+            "savings_yen": 2900.0,
+            "source_url": "https://gemini.google/subscriptions/",
+            "verified_date": "2026-10-21"
+          }
+        },
+        "history": [
+          {
+            "previous_rank": "C",
+            "current_rank": "B",
+            "score_diff": 6.77,
+            "reason": "新規向けキャンペーン「Google AI Pro 1か月間 ￥0 トライアル」適用による支払負担点向上"
+          }
+        ],
+        "source_urls": [
+          "https://gemini.google/subscriptions/",
+          "https://antigravity.google/docs/getting-started?tab=cli",
+          "https://antigravity.google/docs/plans"
+        ],
+        "currency": "JPY",
+        "price_usd": 19.99,
+        "price_jpy": 2900.0,
+        "verification_records": {
+          "target_plan_name": "Google AI Pro",
+          "fetched_at": "2026-10-22T10:16:00Z",
+          "currency_basis": "日本向け価格 (￥2,900 JPY / 月)",
+          "quotes": {
+            "payment": "Google AI Pro 1 生産性と創造性を高めるパワフルな新機能を より多く 利用できます。 ￥ 2,900 JPY / 月 無料版の 4 倍の使用量上限 (https://gemini.google/subscriptions/)",
+            "quota": "Google AI Pro: A high, generous quota, refreshed every five hours until the weekly limit is reached / A higher weekly rate limit / the rate limits correlate with the amount of work done by the agent (https://antigravity.google/docs/plans)",
+            "fit": "The agent indexes the workspace, develops an implementation plan, and displays proposed changes for your review. / Press Y to confirm and execute `python3 main.py` / /goal: Runs the task autonomously until completion / extensions for VS Code, JetBrains, Visual Studio, Zed, Xcode (https://antigravity.google/docs/getting-started?tab=cli)",
+            "continuity": "Google AI Pro: refreshed every five hours until the weekly limit is reached / Users on Google AI Pro or Ultra plans can use purchased AI credits for additional overage usage above the baseline quota (https://antigravity.google/docs/plans)"
+          }
+        },
+        "work_capacity": {
+          "hours_summary": "利用枠の詳細は未確認",
+          "cycle_type": "rolling_5h",
+          "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+        },
+        "verified_at": "2026-10-22T10:16:00Z",
+        "scored_at": "2026-10-25T10:11:56.042510+00:00"
+      }
+    },
+    {
+      "plan_id": "claude-pro",
+      "plan_name": "Claude Pro",
+      "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+      "rank": "C",
+      "is_pending": false,
+      "total_score": 55.3,
+      "cost_90d_yen": 9300.0,
+      "campaign_status": "none",
+      "scores": {
+        "payment": {
+          "score": 13.3,
+          "max": 35.0,
+          "cost_90d_yen": 9300.0,
+          "note": "公式表示価格（税・手数料別）を指定為替で換算した90日概算。実際の請求額とは異なる場合があります。"
+        },
+        "quota": {
+          "score": 10.0,
+          "max": 30.0,
+          "status": "dynamic_fair_use",
+          "label": null,
+          "note": "5時間セッション枠および7日間週間枠の2層ローリング制限（固定下限回数は非公表の動的枠）であると公式ドキュメントで確認でき10点。"
+        },
+        "fit": {
+          "score": 25.0,
+          "max": 25.0,
+          "features": {
+            "autonomous_agent": "supported",
+            "ide_integration": "supported",
+            "execution_support": "supported"
+          },
+          "exclusions": [],
+          "note": "公式資料で確認できる機能の有無の評価であり、生成コードの品質評価ではありません"
+        },
+        "continuity": {
+          "score": 7.0,
+          "max": 10.0,
+          "rule": "short_rolling_with_limits_or_no_fallback",
+          "reason": "5時間ローリング枠があるが7日間（週間）上限が同時カウントされ、上限到達時はリセット待機または /usage-credits による追加課金となるため7点。",
+          "continued_features": []
+        }
+      },
+      "budget": {
+        "is_over_budget_90d": false,
+        "cost_90d_yen": 9300.0,
+        "upfront_payment_yen": null,
+        "minimum_total_yen": null,
+        "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
+      },
+      "pending_reasons": [],
+      "campaign": {
+        "status": "none",
+        "applied": null
+      },
+      "history": [],
+      "source_urls": [
+        "https://claude.com/pricing",
+        "https://code.claude.com/docs/en/overview.md",
+        "https://code.claude.com/docs/en/authentication.md",
+        "https://code.claude.com/docs/en/vs-code.md",
+        "https://code.claude.com/docs/en/jetbrains.md",
+        "https://code.claude.com/docs/en/errors.md",
+        "https://code.claude.com/docs/en/statusline.md"
+      ],
+      "currency": "USD",
+      "price_usd": 20.0,
+      "price_jpy": null,
+      "verification_records": {
+        "target_plan_name": "Claude Pro",
+        "fetched_at": "2026-10-21T02:27:00Z",
+        "currency_basis": "USD表示 ($20 if billed monthly / $17 per month with annual discount)",
+        "quotes": {
+          "payment": "Pro For everyday work $17 Per month with annual subscription discount ($200 billed up front). $20 if billed monthly. (https://claude.com/pricing)",
+          "quota": "Subscription plans include a rolling usage allowance. When it runs out you see one of these messages: You've hit your session limit / You've hit your weekly limit (https://code.claude.com/docs/en/errors.md)",
+          "fit": "Claude Code is an agentic coding tool that reads your codebase, edits files, runs commands, and integrates with your development tools. Available in your terminal, IDE, desktop app, and browser. (https://code.claude.com/docs/en/overview.md) / Claude Code: Yes on Pro (https://claude.com/pricing)",
+          "continuity": "rate_limits.five_hour.used_percentage, rate_limits.seven_day.used_percentage: Percentage of the 5-hour or 7-day rate limit consumed (https://code.claude.com/docs/en/statusline.md) / Usage counts against the session and weekly allowances at the same time. Run /usage-credits to buy additional usage on Pro and Max (https://code.claude.com/docs/en/errors.md)"
+        }
+      },
+      "work_capacity": {
+        "hours_summary": "利用枠の詳細は未確認",
+        "cycle_type": "rolling_5h",
+        "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+      },
+      "verified_at": "2026-10-21T02:27:00Z",
+      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "campaign_evaluation": null
+    },
+    {
+      "plan_id": "chatgpt-plus",
+      "plan_name": "ChatGPT Plus",
+      "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+      "rank": "C",
+      "is_pending": false,
+      "total_score": 55.3,
+      "cost_90d_yen": 9300.0,
+      "campaign_status": "none",
+      "scores": {
+        "payment": {
+          "score": 13.3,
+          "max": 35.0,
+          "cost_90d_yen": 9300.0,
+          "note": "公式表示価格（税・手数料別）を指定為替で換算した90日概算。実際の請求額とは異なる場合があります。"
+        },
+        "quota": {
+          "score": 10.0,
+          "max": 30.0,
+          "status": "dynamic_fair_use",
+          "label": null,
+          "note": "5時間あたりのローカルメッセージ目安（GPT-6 Astra 5〜45、GPT-6.1 Sol 15〜160等）は公表されているが『固定上限ではなくタスク・モデルにより変動（not fixed message limits）』と明記されており10点。"
+        },
+        "fit": {
+          "score": 25.0,
+          "max": 25.0,
+          "features": {
+            "autonomous_agent": "supported",
+            "ide_integration": "supported",
+            "execution_support": "supported"
+          },
+          "exclusions": [],
+          "note": "公式資料で確認できる機能の有無の評価であり、生成コードの品質評価ではありません"
+        },
+        "continuity": {
+          "score": 7.0,
+          "max": 10.0,
+          "rule": "short_rolling_with_limits_or_no_fallback",
+          "reason": "5時間周期のリセットだがローカルとクラウドで枠を共有し週間制限（Weekly limits）も適用され、上限到達時は追加クレジット購入またはリセット待機となるため7点。",
+          "continued_features": []
+        }
+      },
+      "budget": {
+        "is_over_budget_90d": false,
+        "cost_90d_yen": 9300.0,
+        "upfront_payment_yen": null,
+        "minimum_total_yen": null,
+        "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
+      },
+      "pending_reasons": [],
+      "campaign": {
+        "status": "none",
+        "applied": null
+      },
+      "history": [],
+      "source_urls": [
+        "https://learn.chatgpt.com/docs/pricing.md",
+        "https://chatgpt.com/pricing/",
+        "https://learn.chatgpt.com/docs/ide.md",
+        "https://learn.chatgpt.com/docs/cli.md",
+        "https://raw.githubusercontent.com/openai/codex/main/README.md"
+      ],
+      "currency": "USD",
+      "price_usd": 20.0,
+      "price_jpy": null,
+      "verification_records": {
+        "target_plan_name": "ChatGPT Plus",
+        "fetched_at": "2026-10-21T02:29:00Z",
+        "currency_basis": "USD表示 ($20 / month)",
+        "quotes": {
+          "payment": "PricingCard name=\"Plus\" price=\"$20\" interval=\"/month\" (https://learn.chatgpt.com/docs/pricing.md)",
+          "quota": "The estimates below show local messages per five-hour period for Plus... GPT-6 Astra: 5-45, GPT-6.1 Sol: 15-160, GPT-6 Sol: 15-150, GPT-6 Luna: 350-3,000... Usage depends on the model and task. These estimates are not fixed message limits (https://learn.chatgpt.com/docs/pricing.md)",
+          "fit": "Codex is included in ChatGPT Plus... Codex on the web, in the CLI, in the IDE extension, and on iOS (pricing.md) / Visual Studio Code, Cursor, Windsurf, Xcode, JetBrains IDEs (ide.md) / Let Codex inspect files, make edits, and run the tools already installed on your machine (cli.md)",
+          "continuity": "local messages per five-hour period for Plus... Local messages and cloud chats share your plan's usage allowance. Weekly limits may also apply... ChatGPT Plus and Pro users who reach their usage limit can purchase additional credits to continue working (https://learn.chatgpt.com/docs/pricing.md)"
+        }
+      },
+      "work_capacity": {
+        "hours_summary": "利用枠の詳細は未確認",
+        "cycle_type": "rolling_5h",
+        "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+      },
+      "verified_at": "2026-10-21T02:29:00Z",
+      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "campaign_evaluation": null
+    },
+    {
+      "plan_id": "windsurf",
+      "plan_name": "Windsurf Pro",
+      "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+      "rank": "C",
+      "is_pending": false,
+      "total_score": 51.3,
+      "cost_90d_yen": 9300.0,
+      "campaign_status": "none",
+      "scores": {
+        "payment": {
+          "score": 13.3,
+          "max": 35.0,
+          "cost_90d_yen": 9300.0,
+          "note": "公式表示価格（税・手数料別）を指定為替で換算した90日概算。実際の請求額とは異なる場合があります。"
+        },
+        "quota": {
+          "score": 10.0,
+          "max": 30.0,
+          "status": "dynamic_fair_use",
+          "label": "日次・週次クォータ(数値非公表)",
+          "note": "公式 quota ドキュメントに日次・週次の使用量枠(budget)があると記載されるが、具体的な数値は公式に公表されていない(使用モデルのトークン消費に依存)ため、動的制限(dynamic_fair_use)の10点。"
+        },
+        "fit": {
+          "score": 25.0,
+          "max": 25.0,
+          "features": {
+            "autonomous_agent": "supported",
+            "ide_integration": "supported",
+            "execution_support": "supported"
+          },
+          "exclusions": [],
+          "note": "公式資料で確認できる機能の有無の評価であり、生成コードの品質評価ではありません"
+        },
+        "continuity": {
+          "score": 3.0,
+          "max": 10.0,
+          "rule": "weekly_reset",
+          "reason": "公式に『your plan now includes a daily and weekly usage allowance that refreshes automatically』『Your quota resets on a daily and weekly basis, based on the calendar date』と明記。5時間ローリングは無く、上限到達時は Pro では追加購入が必要なため週次リセット3点。",
+          "continued_features": []
+        }
+      },
+      "budget": {
+        "is_over_budget_90d": false,
+        "cost_90d_yen": 9300.0,
+        "upfront_payment_yen": null,
+        "minimum_total_yen": null,
+        "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
+      },
+      "pending_reasons": [],
+      "campaign": {
+        "status": "none",
+        "applied": null
+      },
+      "history": [],
+      "source_urls": [
+        "https://windsurf.com/pricing",
+        "https://docs.windsurf.com/windsurf/accounts/quota",
+        "https://docs.windsurf.com/windsurf/cascade/cascade.md",
+        "https://docs.windsurf.com/windsurf/terminal.md"
+      ],
+      "currency": "USD",
+      "price_usd": 20.0,
+      "price_jpy": null,
+      "verification_records": {
+        "target_plan_name": "Windsurf Pro (Devin Desktop)",
+        "fetched_at": "2026-10-22T10:14:00Z",
+        "currency_basis": "USD表示 (Pro $20 per month)",
+        "quotes": {
+          "payment": "Pro POPULAR $20 per month Select plan Everything in Free, plus: Increased quotas, including access to frontier models from OpenAI, Claude, Gemini, and SpaceXAI, plus leading open source models (https://windsurf.com/pricing)",
+          "quota": "Your plan includes a usage allowance measured as a daily and weekly budget. Your budget is based on how many tokens the model uses for each request. (https://docs.windsurf.com/windsurf/accounts/quota)",
+          "fit": "Cascade is Windsurf's agentic AI assistant with Code/Chat modes, tool calling, and enhanced terminal with Command/Turbo mode (https://docs.windsurf.com/windsurf/cascade/cascade.md, https://docs.windsurf.com/windsurf/terminal.md)",
+          "continuity": "In March 2026, Devin Desktop replaced the credit-based system with a quota-based usage system. Instead of buying and spending credits, your plan now includes a daily and weekly usage allowance that refreshes automatically. / When you hit your limit: Free: Wait until your next daily or weekly reset. Pro, Teams, or Max: Purchase extra usage to keep working without interruption. Your quota resets on a daily and weekly basis, based on the calendar date. (https://docs.windsurf.com/windsurf/accounts/quota)"
+        }
+      },
+      "work_capacity": {
+        "hours_summary": "利用枠の詳細は未確認",
+        "cycle_type": "daily_weekly",
+        "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+      },
+      "verified_at": "2026-10-22T10:14:00Z",
+      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "campaign_evaluation": null
+    },
+    {
+      "plan_id": "cursor-premium",
+      "plan_name": "Cursor Premium (The X Subscription)",
+      "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+      "rank": "C",
+      "is_pending": false,
+      "total_score": 40.45,
+      "cost_90d_yen": 13950.0,
+      "campaign_status": "none",
+      "scores": {
+        "payment": {
+          "score": 2.4499999999999984,
+          "max": 35.0,
+          "cost_90d_yen": 13950.0,
+          "note": "公式表示価格（税・手数料別）を指定為替で換算した90日概算。実際の請求額とは異なる場合があります。"
+        },
+        "quota": {
+          "score": 10.0,
+          "max": 30.0,
+          "status": "dynamic_fair_use",
+          "label": "週次プール(数値非公表)",
+          "note": "全有料プランに Cursor モデル用の週次プール（weekly pool）が付与されると公式明記。Premium は Plus の4倍の枠だが具体的な数値は非公表のため動的制限(dynamic_fair_use)の10点。利用枠の対象は Cursor 独自モデル(Grok / Composer)のみで、Claude / GPT / Gemini などサードパーティモデルは利用枠に含まれず、API定価でプリペイドクレジットから別払いとなる。"
+        },
+        "fit": {
+          "score": 25.0,
+          "max": 25.0,
+          "features": {
+            "autonomous_agent": "supported",
+            "ide_integration": "supported",
+            "execution_support": "supported"
+          },
+          "exclusions": [],
+          "note": "Grok Build(ターミナル)も同じ契約・同じ利用枠で使える。公式ヘルプに、利用枠はCursorとGrokで共有と記載。"
+        },
+        "continuity": {
+          "score": 3.0,
+          "max": 10.0,
+          "rule": "weekly_reset",
+          "reason": "公式に『Every paid plan includes a weekly pool of usage』と明記され、週次でプールが更新されるため週次リセット3点。",
+          "continued_features": []
+        }
+      },
+      "budget": {
+        "is_over_budget_90d": false,
+        "cost_90d_yen": 13950.0,
+        "upfront_payment_yen": null,
+        "minimum_total_yen": null,
+        "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
+      },
+      "pending_reasons": [],
+      "campaign": {
+        "status": "none",
+        "applied": null
+      },
+      "history": [],
+      "source_urls": [
+        "https://cursor.com/help/account-and-billing/pricing",
+        "https://cursor.com/docs/agent/overview.md"
+      ],
+      "currency": "USD",
+      "price_usd": 30.0,
+      "price_jpy": null,
+      "verification_records": {
+        "target_plan_name": "Cursor Premium (The X Subscription)",
+        "fetched_at": "2026-10-22T10:13:00Z",
+        "currency_basis": "USD表示 (Premium $30/mo)",
+        "quotes": {
+          "payment": "Premium $30/mo 4x Plus (https://cursor.com/help/account-and-billing/pricing)",
+          "quota": "Every paid plan includes a weekly pool of usage for Cursor models... Premium and above add all of those, with third-party models at API list price paid from prepaid credit. (https://cursor.com/help/account-and-billing/pricing)",
+          "fit": "Premium and above add all of those [Auto, Cloud Agents, Automations, Bugbot, Origin, third-party models], with third-party models at API list price paid from prepaid credit. (https://cursor.com/help/account-and-billing/pricing)",
+          "continuity": "Every paid plan includes a weekly pool of usage for Cursor models... shared across Cursor and Grok. (https://cursor.com/help/account-and-billing/pricing)"
+        }
+      },
+      "work_capacity": {
+        "hours_summary": "利用枠の詳細は未確認",
+        "cycle_type": "weekly",
+        "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+      },
+      "verified_at": "2026-10-22T10:13:00Z",
+      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "campaign_evaluation": null
+    },
+    {
+      "plan_id": "cursor-pro",
+      "plan_name": "Cursor Pro (Legacy・既存契約者向け)",
+      "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+      "rank": "—",
+      "is_pending": true,
+      "total_score": null,
+      "cost_90d_yen": 9300.0,
+      "campaign_status": "none",
+      "scores": {
+        "payment": {
+          "score": 13.3,
+          "max": 35.0,
+          "cost_90d_yen": 9300.0,
+          "note": "公式表示価格（税・手数料別）を指定為替で換算した90日概算。実際の請求額とは異なる場合があります。"
+        },
+        "quota": {
+          "score": null,
+          "max": 30.0,
+          "status": "unknown",
+          "label": null,
+          "note": "利用枠の公開仕様に対する独自評価であり、実効作業量や生成品質の測定ではありません"
+        },
+        "fit": {
+          "score": null,
+          "max": 25.0,
+          "features": {
+            "autonomous_agent": "unknown",
+            "ide_integration": "unknown",
+            "execution_support": "unknown"
+          },
+          "exclusions": [],
+          "note": "公式資料で確認できる機能の有無の評価であり、生成コードの品質評価ではありません"
+        },
+        "continuity": {
+          "score": null,
+          "max": 10.0,
+          "rule": "unknown",
+          "reason": "Legacy Pro は新規契約不可のため、新規向け比較の対象外として点数を付けない",
+          "continued_features": []
+        }
+      },
+      "budget": {
+        "is_over_budget_90d": false,
+        "cost_90d_yen": 9300.0,
+        "upfront_payment_yen": null,
+        "minimum_total_yen": null,
+        "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
+      },
+      "pending_reasons": [
+        "Legacy Pro は新規契約不可（既存契約者のみ維持）のため、新規向け比較の対象外として点数を付けない",
+        "自律エージェント機能の公式対応状況が未確認",
+        "主要IDE直接統合の公式対応状況が未確認",
+        "コマンド・テスト実行支援の公式対応状況が未確認",
+        "Legacy Pro は新規契約不可のため、新規向け比較の対象外として点数を付けない"
+      ],
+      "campaign": {
+        "status": "none",
+        "applied": null
+      },
+      "history": [],
+      "source_urls": [
+        "https://cursor.com/help/account-and-billing/pricing"
+      ],
+      "currency": "USD",
+      "price_usd": 20.0,
+      "price_jpy": null,
+      "verification_records": {
+        "target_plan_name": "Cursor Pro (Legacy)",
+        "fetched_at": "2026-10-22T10:13:00Z",
+        "currency_basis": "USD表示 (Legacy Pro $20/mo)",
+        "quotes": {
+          "legacy_status": "Legacy Cursor plans are the plans Cursor sold before The X Subscription. They aren't available to new customers, but existing subscribers keep them until they switch or cancel. Legacy plan Price Comparable plan on The X Subscription ... Pro $20/mo Premium (https://cursor.com/help/account-and-billing/pricing)",
+          "note": "既存契約者向けのため新規向け比較では点数を付けない（評価保留）。"
+        }
+      },
+      "work_capacity": {
+        "hours_summary": "利用枠の詳細は未確認",
+        "cycle_type": "monthly",
+        "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+      },
+      "verified_at": "2026-10-22T10:13:00Z",
+      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "campaign_evaluation": null
+    },
+    {
+      "plan_id": "kimi-coding",
+      "plan_name": "Kimi Plus (K2 Coding枠)",
+      "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
+      "rank": "—",
+      "is_pending": true,
+      "total_score": null,
+      "cost_90d_yen": null,
+      "campaign_status": "none",
+      "scores": {
+        "payment": {
+          "score": null,
+          "max": 35.0,
+          "cost_90d_yen": null,
+          "note": "公式表示価格（税・手数料別）を指定為替で換算した90日概算。実際の請求額とは異なる場合があります。"
+        },
+        "quota": {
+          "score": 10.0,
+          "max": 30.0,
+          "status": "dynamic_fair_use",
+          "label": "月次クレジットプール(数値非公表)",
+          "note": "Kimi Code は Plus 以上の新プランで利用でき、会員共通の月次クレジットプール(実使用量に応じて消費、繰越なし)を共有する。固定の利用回数・トークン数は公式に公表されていないため動的制限(dynamic_fair_use)の10点。"
+        },
+        "fit": {
+          "score": 25.0,
+          "max": 25.0,
+          "features": {
+            "autonomous_agent": "supported",
+            "ide_integration": "supported",
+            "execution_support": "supported"
+          },
+          "exclusions": [],
+          "note": "公式資料で確認できる機能の有無の評価であり、生成コードの品質評価ではありません"
+        },
+        "continuity": {
+          "score": 7.0,
+          "max": 10.0,
+          "rule": "short_rolling_with_limits_or_no_fallback",
+          "reason": "新プラン(Plus以上)は5時間ローリングのレート窓があり週次制限はないが、月次の共有クレジットを使い切ると Kimi Code の枠は凍結される。Extra Usage(従量課金)を有効化すれば継続できるが追加課金が必要なため7点。",
+          "continued_features": []
+        }
+      },
+      "budget": {
+        "is_over_budget_90d": null,
+        "cost_90d_yen": null,
+        "upfront_payment_yen": null,
+        "minimum_total_yen": null,
+        "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
+      },
+      "pending_reasons": [
+        "公式料金が未確認のため支払負担を算出できません"
+      ],
+      "campaign": {
+        "status": "none",
+        "applied": null
+      },
+      "history": [],
+      "source_urls": [
+        "https://www.kimi.com/en/help/membership/membership-pricing",
+        "https://www.kimi.com/code/docs/en/kimi-code/membership.html",
+        "https://www.kimi.com/code/docs/en/kimi-code-cli/guides/getting-started.html",
+        "https://www.kimi.com/code/docs/en/kimi-code-for-vscode/getting-started.html"
+      ],
+      "currency": "CNY",
+      "price_usd": null,
+      "price_jpy": null,
+      "verification_records": {
+        "target_plan_name": "Kimi Membership (Plus以上) / Kimi Code",
+        "fetched_at": "2026-10-22T15:18:00Z",
+        "currency_basis": "公式ヘルプの価格は中国向け(CNY: Plus ¥99/月)。日本向けの価格は確認できないため支払負担は評価保留。",
+        "quotes": {
+          "payment": "The current China plans are Go, Plus, Pro, Max, and Ultra... Plus ¥99/month ¥948/year (China membership pricing, captured on October 19, 2026) (https://www.kimi.com/en/help/membership/membership-pricing) — 日本向け価格の記載なし",
+          "quota": "Membership features share a monthly credit pool, metered by actual usage... refresh credits monthly, with no rollover. (https://www.kimi.com/en/help/membership/membership-pricing) / Go tier has no coding quota; Plus and above can use Kimi Code. (https://www.kimi.com/code/docs/en/kimi-code/membership.html)",
+          "fit": "Kimi Code CLI is an AI agent that runs in the terminal... reading and modifying code, running shell commands, searching files... autonomously planning and adjusting its next steps (https://www.kimi.com/code/docs/en/kimi-code-cli/guides/getting-started.html) / Kimi Code for VS Code is an extension integrated into Visual Studio Code... review code diffs (https://www.kimi.com/code/docs/en/kimi-code-for-vscode/getting-started.html)",
+          "continuity": "New plans with Kimi Code access (Plus and higher) have a rolling 5-hour usage limit and no weekly limit... if the monthly total is reached, Kimi Code quota is frozen until the monthly quota resets or you upgrade. / When your subscription quota runs out, you can keep making requests using your Extra Usage balance (https://www.kimi.com/code/docs/en/kimi-code/membership.html)"
+        }
+      },
+      "work_capacity": {
+        "hours_summary": "利用枠の詳細は未確認",
+        "cycle_type": "monthly",
+        "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+      },
+      "verified_at": "2026-10-22T15:18:00Z",
+      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "campaign_evaluation": null
+    }
+  ]
+}

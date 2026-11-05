@@ -1,0 +1,44 @@
+{
+  "version": "1.2.0",
+  "updated_at": "2026-10-21T03:08:00Z",
+  "campaigns": [
+    {
+      "campaign_id": "google-ai-pro-1m-trial",
+      "target_plan_id": "google-ai-pro",
+      "title": "Google AI Pro 1か月間 ￥0 トライアル",
+      "type": "free_trial",
+      "benefit": {
+        "free_days": 30,
+        "discount_months": 1.0,
+        "discount_price_jpy": 0.0,
+        "discount_price_usd": 0.0
+      },
+      "start_date": "2026-01-01",
+      "end_date": "2026-12-31",
+      "target_condition": "新規契約者限定 (1か月間 ￥0、以降 ￥2,900 JPY/月)",
+      "is_new_user_only": true,
+      "source_url": "https://gemini.google/subscriptions/",
+      "verified_date": "2026-10-21",
+      "verification_status": "verified",
+      "verified_quote": "Google AI Pro 1 か月間 ￥0 ￥2,900 JPY / 月"
+    },
+    {
+      "campaign_id": "copilot-pro-30d-trial-removed",
+      "target_plan_id": "github-copilot",
+      "title": "GitHub Copilot Pro 30日間無料トライアル (出典未確認・計算除外)",
+      "type": "free_trial",
+      "benefit": {
+        "free_days": 0,
+        "discount_months": 0.0,
+        "discount_price_usd": 0.0
+      },
+      "start_date": "2026-01-01",
+      "end_date": "2026-12-31",
+      "target_condition": "現行公式ドキュメント (docs.github.com) でCopilot Pro新規30日無料の原文が確認できないため、キャンペーン計算から除外",
+      "is_new_user_only": true,
+      "source_url": "https://docs.github.com/en/copilot/concepts/billing/individual-plans",
+      "verified_date": "2026-10-21",
+      "verification_status": "unverified"
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AIモデル コスパ・単価最安値ランキング - OpenAI, Google Gemini, Anthropic, DeepSeekなどの主要AIモデルのAPI単価と利用可能量を円換算で徹底比較するクライアントサイド動作の静的ツール">
+  <title>AIプラン比較</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- ヘッダー -->
+    <div id="data-load-error" class="data-load-error" role="alert" hidden>⚠️ データを読み込めませんでした。http://localhost などで開いてください</div>
+    <header class="app-header">
+      <div class="header-content">
+        <h1 class="app-title">AIプラン比較</h1>
+      </div>
+
+      <!-- 右上コントロール（テーマ切り替え & 為替レート設定） -->
+      <div class="top-controls">
+        <button id="theme-toggle-btn" class="btn btn-secondary btn-sm theme-btn" type="button" aria-label="テーマ切り替え" title="ダークテーマ / ライトテーマを切り替えます">🌙 ダークテーマ</button>
+        <details class="exchange-rate-box" id="exchange-rate-box">
+          <summary class="exchange-rate-summary">為替レート 表示設定 ▼</summary>
+          <label for="exchange-rate-input" class="exchange-label">為替レート:</label>
+          <div class="input-with-unit rate-input-wrapper">
+            <input
+              type="number"
+              id="exchange-rate-input"
+              class="form-control form-control-sm"
+              value="155"
+              min="50"
+              max="500"
+              step="1"
+            >
+            <span class="unit-text">円/$</span>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <!-- メインモード切り替えナビ -->
+    <nav class="main-mode-nav" role="tablist" aria-label="メイン画面表示切り替え">
+      <button type="button" class="mode-nav-btn active" id="btn-mode-sub" data-target="section-sub" role="tab" aria-selected="true">
+        サブスク
+      </button>
+      <button type="button" class="mode-nav-btn" id="btn-mode-api" data-target="section-api" role="tab" aria-selected="false">
+        API単価
+      </button>
+    </nav>
+
+    <!-- 上部アコーディオン案内（▶マーカーはCSSで全幅非表示・ヒント文言に一本化） -->
+    <details class="app-info-accordion">
+      <summary class="app-info-summary">
+        <div class="summary-left">
+          <span class="info-badge">ℹ️ 評価方針</span>
+          <span class="summary-text">独自指標・モデル品質を含まない・未確認は参考情報（公式表示価格基準）</span>
+        </div>
+        <span class="summary-hint">詳細を開く ▼</span>
+      </summary>
+      <div class="app-info-content">
+        <div class="info-grid">
+          <div class="info-card tier-trial-banner">
+            <h4>🔬 料金・公開仕様に基づく独自コスパ評価 (S・A・B・C 4段階 / 2026-10-tier-v1)</h4>
+            <p><strong>評価プロフィール</strong>: <em>「日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途」</em></p>
+            <ul>
+              <li><strong>【各プラン共通の注記】</strong>公開情報に基づく独自指標。モデル品質は評価対象外。詳細は「詳細を開く」のガイドをご覧ください.</li>
+              <li><strong>確定と保留の区分</strong>: 4軸すべてに一次ソース根拠と確認日があるプラン（5プラン）のみS/A/B/Cランク。未確認のあるプラン（4プラン）は推測せず「評価保留」として別枠表示.</li>
+            </ul>
+          </div>
+          <div class="info-card policy-card">
+            <h4>🔒 選定基準 & プライバシー方針</h4>
+            <ul>
+              <li><strong>エージェント対応プランを主役に厳選（2026年世代）</strong>: 自律コーディングエージェント対応の9プラン（💻 コーディング特化6選 ＋ 👑 本家エージェント付3選）に集中。チャットのみのライトプランは右端の「💬 チャットのみ・ライト枠 [参考]」タブに分離しています。</li>
+              <li><strong>プライバシー重視 & オフライン対応</strong>: ログイン不要・オフラインでも動作可能。取得した生データと為替レートはブラウザ内（<code>localStorage</code>）に安全に保持されます。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <!-- メインカードコンテナ -->
+    <main class="card main-content-card">
+      <!-- メイン: AI月額定額プラン比較 -->
+      <section id="section-sub" class="mode-section active" >
+        <!-- 並び順 + 絞り込み（1つのdetailsに統合し、ボタンと開閉見出しの二重化を解消） -->
+        <details class="filter-panel" id="filter-panel">
+          <summary class="filter-summary">
+            <span class="filter-summary-label">🔍 絞り込み</span>
+            <span class="filter-summary-current" id="filter-summary-current">すべて</span>
+            <span class="filter-summary-icon" aria-hidden="true">▼</span>
+          </summary>
+          <div class="filter-options">
+            <div class="sub-controls-group">
+              <span class="controls-label">並び順:</span>
+              <select id="sub-sort-select" class="form-control form-control-sm">
+                <option value="score">📊 総合スコア順</option>
+                <option value="price">💰 月額料金順</option>
+                <option value="name">🔤 サービス名順</option>
+              </select>
+            </div>
+            <!-- サブスク分類フィルタータブ（6個） -->
+            <div class="sub-filter-tabs-group" role="tablist" aria-label="サブスク区分フィルタ">
+              <button type="button" class="filter-tab active sub-filter-tab" data-subtier="agent-all" role="tab" aria-selected="true">🤖 エージェント対応 すべて</button>
+              <button type="button" class="filter-tab sub-filter-tab" data-subtier="coding-agent" role="tab" aria-selected="false">💻 コーディング特化</button>
+              <button type="button" class="filter-tab sub-filter-tab" data-subtier="native-agent" role="tab" aria-selected="false">👑 本家・汎用＋Agent</button>
+              <button type="button" class="filter-tab sub-filter-tab" data-subtier="entry" role="tab" aria-selected="false">💰 $10〜$15 廉価エージェント</button>
+              <button type="button" class="filter-tab sub-filter-tab" data-subtier="deal" role="tab" aria-selected="false">🔥 セール・特典あり</button>
+              <button type="button" class="filter-tab sub-filter-tab tab-reference" data-subtier="chat-only" role="tab" aria-selected="false">💬 チャットのみ・ライト枠 [参考]</button>
+            </div>
+            <label class="filter-option-label">
+              <input type="checkbox" id="student-toggle" class="form-check-input">
+              🎓 学割適用
+            </label>
+            <label class="filter-option-label">
+              <input type="checkbox" id="campaign-toggle" class="form-check-input">
+              🆕 新規契約キャンペーン適用
+            </label>
+          </div>
+        </details>
+
+        <!-- サブスク比較テーブルコンテナ（4列スリム構成） -->
+        <div class="model-table-container">
+          <table class="model-table sub-table" aria-label="主要AI月額定額プラン比較表">
+            <thead>
+              <tr>
+                <th scope="col" class="col-sub-name">サービス名 / 提供元</th>
+                <th scope="col" class="th-deal col-sub-deal">月額料金・利用枠・特典</th>
+                <th scope="col" class="col-sub-agent">🤖 エージェント機能 & 搭載モデル (2026)</th>
+                <th scope="col" class="col-sub-desc">主な特徴・おすすめ用途</th>
+              </tr>
+            </thead>
+            <tbody id="sub-table-body">
+              <!-- JSで安全に動的生成 -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- サブスク vs API 選び方ガイド -->
+        <div class="sub-guide-box">
+          <h3 class="sub-guide-title">💡 コーディング特化 vs 本家・汎用＋エージェント付の選び方</h3>
+          <ul class="sub-guide-list">
+            <li><strong>💻 コーディング特化プラン:</strong> ターミナルや既存IDEで多くの作業を回したい場合に向きます。料金・利用枠・契約条件は各プランの「詳細・採点内訳」で確認してください。</li>
+            <li><strong>👑 本家・汎用＋エージェント付プラン:</strong> Webチャット、長文処理、リサーチと開発支援をまとめて使いたい場合に向きます。付帯機能と現在の価格は各プランの詳細を確認してください。</li>
+            <li><strong>💬 チャットのみ・ライト枠（別枠参考）:</strong> コーディングエージェントが不要でWebチャットや検索だけを安く使いたい場合は、上の絞り込みから「💬 チャットのみ・ライト枠 [参考]」に切り替えて比較できます。実際の月額は各プランの料金欄（公式表示価格）を参照してください。</li>
+            <li><strong>🔄 利用上限に達した場合の確認:</strong> 利用枠の更新時刻や追加料金の条件は、サービス・プラン・機能によって異なります。各サービスの公式情報とアカウントの使用状況を確認してください。複数サービスを併用しても、連続して作業できる時間や費用の削減を保証するものではありません。</li>
+            <li><strong>📊 API従量課金との損益分岐点:</strong> 月間の利用量が少ない場合や、自前キー（Cline / Roo Code等）で <code>DeepSeek-V3.2</code> や <code>Gemini 2.5 Flash</code> を使う場合は、「📊 2026年最新 標準モデル API単価・コスパ表」で$20分のトークン換算量を確認してください。</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- サブ: 各社標準モデル ガチンコ比較ランキング（API単価ベース） -->
+      <section id="section-api" class="mode-section" style="display: none;" aria-labelledby="ranking-heading">
+        <!-- データ同期ステータスバー（API単価表タブ内に移動：要件3） -->
+        <div id="data-status-bar" class="data-status-bar" style="margin-bottom: 12px;">
+          <span id="data-status-indicator" class="status-indicator">📦 各社標準モデル データ表示中</span>
+          <span class="data-source-note">※取得元: OpenRouter公開API（各社直販API価格ではなく公開エンドポイント参考値です）。未更新時は内蔵参考値を表示します</span>
+        </div>
+
+        <!-- API単価更新ボタン（section-api内に配置） -->
+        <button id="fetch-live-btn" class="btn btn-primary btn-sm" type="button" title="OpenRouter公開APIからAPI単価を取得・照合します">🔄 ネットからAPI単価を更新</button>
+
+        <div class="ranking-header-bar">
+          <div>
+            <h2 id="ranking-heading" class="card-title">📊 各社標準モデル API単価・コスパ比較ランキング</h2>
+            <p class="section-desc">
+              Anthropic (Sonnet 4.5) / OpenAI (GPT-5) / Google (Gemini 2.5) / Z.ai (GLM-5) / DeepSeek (V3.2) の主要API単価と$20換算トークン量
+            </p>
+          </div>
+
+          <!-- 並び替えセレクト -->
+          <div class="sort-box">
+            <label for="sort-select" class="sort-label">並び替え:</label>
+            <select id="sort-select" class="form-control form-control-sm">
+              <option value="composite">💰 複合単価順（最安〜・入力75%出力25%仮定）</option>
+              <option value="input">📥 入力単価順（最安〜）</option>
+              <option value="output">📤 出力単価順（最安〜）</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- カテゴリフィルタタブ -->
+        <div class="filter-tab-bar" role="tablist" aria-label="モデルカテゴリフィルタ">
+          <button type="button" class="filter-tab active" data-tier="all" role="tab" aria-selected="true">すべて (8)</button>
+          <button type="button" class="filter-tab" data-tier="flagship" role="tab" aria-selected="false">🏆 看板・主力標準 (5)</button>
+          <button type="button" class="filter-tab" data-tier="light" role="tab" aria-selected="false">⚡ 高速・軽量標準 (3)</button>
+        </div>
+
+        <!-- ランキングテーブルコンテナ -->
+        <div class="model-table-container">
+          <table class="model-table" aria-label="各社標準AIモデル比較表">
+            <thead>
+              <tr>
+                <th scope="col">モデル名 / プロバイダ</th>
+                <th scope="col">区分</th>
+                <th scope="col">概要・仕様</th>
+                <th scope="col">入力 / 出力 (1Mトークン)</th>
+                <th scope="col">複合単価 (1M・入力75%出力25%仮定)</th>
+                <th scope="col" class="th-sub-token">月額$20換算 トークン量</th>
+                <th scope="col">価格ステータス</th>
+              </tr>
+            </thead>
+            <tbody id="ranking-table-body">
+              <!-- JSで安全に動的生成 -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="checker-disclaimer">
+          ※「月額課金換算」は月額サブスク定価（$20 ≒ 約3,100円）をAPIで消費した場合の利用可能量（損益分岐点の目安）です。この量以上使うならサブスク、未満ならAPIの方が安くなります。
+        </div>
+      </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="app-footer">
+      <div class="footer-profile">
+        <p class="developer-info">
+          Project: <strong>AIモデル コスパ・単価最安値ランキング</strong> (Created by <strong>cocoa3j21</strong>)
+        </p>
+        <p class="footer-note">無料配布・オープンソースプロジェクト（支援の有無による機能制限は一切ありません）</p>
+      </div>
+
+      <!-- リンク & 支援エリア -->
+      <div class="footer-links-box">
+        <div class="link-item">
+          <span class="link-label">ソースコード・リポジトリ:</span>
+          <a href="https://github.com/cocoa3j21" target="_blank" rel="noopener noreferrer" class="footer-link">
+            GitHub (@cocoa3j21)
+          </a>
+        </div>
+
+        <div class="link-item donation-item">
+          <span class="link-label">開発支援（Buy Me a Coffee）:</span>
+          <!-- 開設・受取設定の確認前のため無効表示 -->
+          <div class="donation-btn-wrapper">
+            <button
+              type="button"
+              class="btn btn-donation disabled"
+              disabled
+              aria-disabled="true"
+              title="受取設定の確認中のため、現在受付準備中です"
+            >
+              ☕ Buy Me a Coffee <span class="badge badge-warning">準備中</span>
+            </button>
+            <span class="donation-status-note">※アカウント開設・受取設定の確認中のため準備中です（支援は任意です）</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-legal">
+        <p>&copy; cocoa3j21. All rights reserved. Open source AI model cost benchmark & ranking tool.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

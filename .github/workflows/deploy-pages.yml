@@ -1,0 +1,157 @@
+name: Validate and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Assemble deployment artifacts
+        run: |
+          mkdir -p _site
+          cp index.html app.js style.css subscriptions_tier.json campaigns.json models_live.json deals_live.json _site/
+
+      - name: Verify artifact integrity and syntax
+        run: |
+          echo "=== 1. 必須7ファイルの存在と非空検証 ==="
+          REQUIRED_FILES=(
+            "index.html"
+            "app.js"
+            "style.css"
+            "subscriptions_tier.json"
+            "campaigns.json"
+            "models_live.json"
+            "deals_live.json"
+          )
+          for f in "${REQUIRED_FILES[@]}"; do
+            if [ ! -s "_site/$f" ]; then
+              echo "ERROR: Required file _site/$f is missing or empty" >&2
+              exit 1
+            fi
+          done
+
+          echo "=== 2. JSON構文の検証 ==="
+          python -m json.tool _site/subscriptions_tier.json > /dev/null
+          python -m json.tool _site/campaigns.json > /dev/null
+          python -m json.tool _site/models_live.json > /dev/null
+          python -m json.tool _site/deals_live.json > /dev/null
+
+          echo "=== 3. JavaScript構文の検証 ==="
+          node --check _site/app.js
+
+          echo "=== 4. 許可リスト照合（不要ファイルの混入防止） ==="
+          FILE_COUNT=$(find _site -maxdepth 1 -type f | wc -l)
+          if [ "$FILE_COUNT" -ne 7 ]; then
+            echo "ERROR: Expected exactly 7 files in _site, found $FILE_COUNT" >&2
+            find _site -maxdepth 1 -type f
+            exit 1
+          fi
+
+          while IFS= read -r file; do
+            base=$(basename "$file")
+            matched=false
+            for allowed in "${REQUIRED_FILES[@]}"; do
+              if [ "$base" = "$allowed" ]; then
+                matched=true
+                break
+              fi
+            done
+            if [ "$matched" = false ]; then
+              echo "ERROR: Disallowed file in _site: $base" >&2
+              exit 1
+            fi
+          done < <(find _site -maxdepth 1 -type f)
+
+          echo "Artifact verification passed successfully!"
+
+      - name: Run subpath smoke test
+        run: |
+          mkdir -p /tmp/smoke_root/ai-budget-meter-site
+          cp _site/* /tmp/smoke_root/ai-budget-meter-site/
+
+          python3 -m http.server 8080 --directory /tmp/smoke_root > /dev/null 2>&1 &
+          SERVER_PID=$!
+          sleep 2
+
+          ENDPOINTS=(
+            "http://127.0.0.1:8080/ai-budget-meter-site/"
+            "http://127.0.0.1:8080/ai-budget-meter-site/style.css"
+            "http://127.0.0.1:8080/ai-budget-meter-site/app.js"
+            "http://127.0.0.1:8080/ai-budget-meter-site/subscriptions_tier.json"
+            "http://127.0.0.1:8080/ai-budget-meter-site/campaigns.json"
+            "http://127.0.0.1:8080/ai-budget-meter-site/models_live.json"
+            "http://127.0.0.1:8080/ai-budget-meter-site/deals_live.json"
+          )
+          for ep in "${ENDPOINTS[@]}"; do
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$ep")
+            echo "Smoke test [$STATUS]: $ep"
+            if [ "$STATUS" -ne 200 ]; then
+              echo "ERROR: Subpath smoke test failed on $ep (status $STATUS)" >&2
+              kill $SERVER_PID
+              exit 1
+            fi
+          done
+
+          kill $SERVER_PID
+          echo "Subpath smoke test passed successfully!"
+
+      - name: Upload validated artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: validated-pages-site
+          path: _site/
+          retention-days: 1
+
+  deploy:
+    needs: validate
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
+    steps:
+      - name: Download validated artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: validated-pages-site
+          path: _site/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '_site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

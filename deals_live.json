@@ -1,0 +1,160 @@
+{
+  "updatedAt": "2026-10-18T19:18:00.000000",
+  "version": "2.0",
+  "subscriptions": {
+    "opencode-go": {
+      "hasDeal": true,
+      "badge": "🔥 初月$5 / 月$60相当枠",
+      "tag": "初月半額 / 月$60枠付帯",
+      "annualDiscount": "月額$10定額 (初回プロモーションで初月$5〜、上位Go Plusは$40)",
+      "studentDiscount": "オープンソース貢献者コミュニティ特典あり",
+      "freeTier": "OpenCode CLI本体は永久無料（MITライセンス）",
+      "specialDeal": "月$10でGLM-5・Kimi K2・DeepSeek・Qwen等の厳選モデルを最大$60相当までエージェント利用可能",
+      "dealScore": 98
+    },
+    "zai-glm-coding": {
+      "hasDeal": true,
+      "badge": "🔥 初回割引 / 数倍トークン枠",
+      "tag": "高キャッシュ還元 / 廉価枠",
+      "annualDiscount": "Liteプラン 約$10/月（四半期・年払い割引あり、上位Proは約$30/月）",
+      "studentDiscount": "開発者・アカデミック向けキャンペーン随時実施",
+      "freeTier": "新規登録時の初回ボーナストークン・お試し枠あり",
+      "specialDeal": "Claude CodeやOpenCodeの裏側モデルとして直結可能。本家Proの数倍の作業量を回せる高コスパ枠",
+      "dealScore": 96
+    },
+    "kimi-coding": {
+      "hasDeal": true,
+      "badge": "🔥 低価格K2枠 / 長文特化",
+      "tag": "Kimi K2 / エージェント対応",
+      "annualDiscount": "月額約$10〜$12相当（プラン・チャージ特典により割引あり）",
+      "studentDiscount": "なし",
+      "freeTier": "Webチャットおよび一部APIトライアル枠は無料利用可能",
+      "specialDeal": "Kimi K2 Thinking / CodingをClaude Code互換エンドポイントやOpenCodeから低コストで利用可能",
+      "dealScore": 91
+    },
+    "github-copilot": {
+      "hasDeal": true,
+      "badge": "🔥 年払17%OFF / 学割無料",
+      "tag": "学生・教員無料 / 年払い割",
+      "annualDiscount": "年払い$100/年 (月換算 約$8.33・約17%OFF)",
+      "studentDiscount": "学生・教員・人気OSSメンテナーは完全無料（GitHub Student Dev Pack）",
+      "freeTier": "無料枠あり（月2,000補完＋50チャット・Agentリクエスト）＋30日体験",
+      "specialDeal": "年払い$100/年（月換算 約$8.33）。学生・教員・特定OSSメンテナー向けの無料提供制度あり（※要件確認が必要）",
+      "dealScore": 99
+    },
+    "windsurf": {
+      "hasDeal": true,
+      "badge": "🔥 年払17%OFF ($12.5/月)",
+      "tag": "年払い割引 / 無料お試し枠",
+      "annualDiscount": "年払い$150/年 (月換算 $12.50・約17%OFF)",
+      "studentDiscount": "学割プログラム展開中",
+      "freeTier": "無料プランあり（基本補完・初回Cascadeクレジット付与）",
+      "specialDeal": "Cursor比で月$5〜$7.5安く、自律度の高いCascadeエージェント環境を提供",
+      "dealScore": 92
+    },
+    "cursor-pro": {
+      "hasDeal": true,
+      "badge": "🔥 年払20%OFF ($16/月)",
+      "tag": "年払い20%OFF / 体験枠",
+      "annualDiscount": "年払い$192/年 (月換算 $16.00・20%OFF)",
+      "studentDiscount": "学生向け認証割引プログラムあり",
+      "freeTier": "14日間Pro無料トライアル＋Hobby無料枠",
+      "specialDeal": "AIエディタ。Claude Sonnet 4.5 / Opus 4.6 / GPT-5を切替可能（※未確認の参考情報）",
+      "dealScore": 90
+    },
+    "claude-pro": {
+      "hasDeal": true,
+      "badge": "🔥 年払約17%OFF ($17〜18/月)",
+      "tag": "Claude Code利用権付帯",
+      "annualDiscount": "年払い契約で月換算 約$17〜$18（通常月払い$20から割引）",
+      "studentDiscount": "大学向け教育プラン展開あり",
+      "freeTier": "Webチャット無料枠あり（※Claude Code利用にはPro以上またはAPIが必要）",
+      "specialDeal": "最高峰のコーディング頭脳「Claude Code」をサブスク枠で直接利用可能（5時間ごとリセット制）",
+      "dealScore": 94
+    },
+    "chatgpt-plus": {
+      "hasDeal": false,
+      "badge": "🌐 Codexエージェント枠付帯",
+      "tag": "Codex CLI / Cloud付帯",
+      "annualDiscount": "個人Plusは月払い$20のみ（Teamプランは年払い割引あり）",
+      "studentDiscount": "ChatGPT Edu（大学機関向け）",
+      "freeTier": "無料枠でGPT-5軽量版・検索・音声利用可",
+      "specialDeal": "自律コーディングエージェント「OpenAI Codex (CLI / クラウドサンドボックス)」の利用権が標準付帯",
+      "dealScore": 88
+    },
+    "google-ai-pro": {
+      "hasDeal": true,
+      "badge": "🎁 初月無料 / 2TB付帯",
+      "tag": "年額割 / 2TBストレージ付",
+      "annualDiscount": "年額一括払いで実質約16%OFF（日本円定価 月2,900円）",
+      "studentDiscount": "学生向け割引・無料キャンペーン随時実施",
+      "freeTier": "1ヶ月無料トライアル＋Google AI Studio無料枠",
+      "specialDeal": "Gemini CLI / Julesエージェント利用枠に加え、Googleドライブ2TBとWorkspace連携が付帯",
+      "dealScore": 93
+    },
+    "google-ai-plus": {
+      "hasDeal": true,
+      "badge": "🔥 月700円台〜 / 年払割",
+      "tag": "超低価格エントリー",
+      "annualDiscount": "年払い約7,250円（月換算 約600円〜725円前後）の超破格設定",
+      "studentDiscount": "なし",
+      "freeTier": "無料版Geminiあり",
+      "specialDeal": "月700円台でGemini上位モデル・Deep Research・Gmail/Docs連携が使えるライト層向けプラン",
+      "dealScore": 95
+    },
+    "chatgpt-go": {
+      "hasDeal": false,
+      "badge": "💰 低価格ライト枠 ($8〜10)",
+      "tag": "チャット制限緩和プラン",
+      "annualDiscount": "月額約1,400〜1,500円前後（約$8〜$10・地域により順次展開）",
+      "studentDiscount": "なし",
+      "freeTier": "無料版ChatGPTあり",
+      "specialDeal": "Plus（$20）の半額以下で日常のチャット回数制限を緩和したいライトユーザー向け",
+      "dealScore": 84
+    },
+    "perplexity-pro": {
+      "hasDeal": true,
+      "badge": "🎓 学割 / 年払17%OFF",
+      "tag": "学割・紹介特典 / 年払17%OFF",
+      "annualDiscount": "年払い$200/年 (月換算 約$16.67・約17%OFF)",
+      "studentDiscount": "学生キャンペーンで最大1年無料・割引あり",
+      "freeTier": "無料版で無制限クイック検索＋毎日数回のPro Search",
+      "specialDeal": "GPT-5やClaude Sonnet 4.5を横断して出典付きの高速Webリサーチが可能",
+      "dealScore": 89
+    }
+  },
+  "models": {
+    "anthropic/claude-sonnet-4.5": {
+      "badge": "⚡ キャッシュ90%OFF / Batch 50%OFF",
+      "detail": "Prompt Cachingヒット時 入力単価 $0.30 / 1M、Batch API 50%OFF"
+    },
+    "openai/gpt-5": {
+      "badge": "⚡ キャッシュ75%OFF / Batch 50%OFF",
+      "detail": "プロンプトキャッシュ命中時 入力大幅割引、Batch API利用で50%OFF"
+    },
+    "google/gemini-2.5-pro": {
+      "badge": "📚 200万長文 / AI Studio無料枠",
+      "detail": "コンテキストキャッシュ割引対応、Google AI Studioに無料テスト枠あり"
+    },
+    "z-ai/glm-5": {
+      "badge": "🔥 キャッシュ高還元 / 激安主力",
+      "detail": "プロンプトキャッシュ高ヒット率で実効単価が極めて安いコーディング主力モデル"
+    },
+    "deepseek/deepseek-chat": {
+      "badge": "⚡ キャッシュヒット90%OFF",
+      "detail": "プロンプトキャッシュ命中時は入力単価 $0.014 / 1M（約90%割引）"
+    },
+    "anthropic/claude-haiku-4.5": {
+      "badge": "⚡ キャッシュ90%OFF",
+      "detail": "Prompt Cachingヒット時 入力$0.08 / 1M、高速サブエージェント向け"
+    },
+    "openai/gpt-5-mini": {
+      "badge": "⚡ キャッシュ割引 / Batch 50%OFF",
+      "detail": "高速・低コストな軽量推論＆コーディング補助モデル"
+    },
+    "google/gemini-2.5-flash": {
+      "badge": "🎁 AI Studio 15RPM完全無料",
+      "detail": "Google AI Studioでは無料枠あり、大量バッチ処理や軽量エージェントに最適"
+    }
+  }
+}
