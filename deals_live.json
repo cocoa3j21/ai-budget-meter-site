@@ -53,14 +53,17 @@
       "dealScore": 92
     },
     "cursor-pro": {
-      "hasDeal": true,
-      "badge": "🔥 年払20%OFF ($16/月)",
-      "tag": "年払い20%OFF / 体験枠",
-      "annualDiscount": "年払い$192/年 (月換算 $16.00・20%OFF)",
-      "studentDiscount": "学生向け認証割引プログラムあり",
-      "freeTier": "14日間Pro無料トライアル＋Hobby無料枠",
-      "specialDeal": "AIエディタ。Claude Sonnet 4.5 / Opus 4.6 / GPT-5を切替可能（※未確認の参考情報）",
-      "dealScore": 90
+      "hasDeal": false,
+      "badge": "⚠️ 出典未確認: 年払割引の公式記載なし",
+      "tag": "年払い・トライアル・学割は公式記載なし（要確認） / Legacy既存契約者向け",
+      "annualDiscount": "年払い$192/年（月換算$16・20%OFF）は公式Help Docs/Pricingで記載確認できず（要確認）",
+      "studentDiscount": "学生向け割引プログラムは公式記載確認できず（要確認）",
+      "freeTier": "14日間Pro無料トライアルは公式記載確認できず（要確認）。無料はFree（Limited・公式）",
+      "specialDeal": "Legacy ProはThe X Subscription Premium相当（公式）。モデルは月次2プール（Cursor Models / Other Models）＋on-demandで利用可（公式）。特定モデル名の現行一覧は要確認",
+      "dealScore": 90,
+      "sourceUrl": "https://cursor.com/help/account-and-billing/pricing",
+      "confirmedAt": "2026-11-16",
+      "verificationNote": "2026-11-16 Help Docs/Pricing一次確認: 年払$192・14日間トライアル・学生割引の公式記載なし=要確認。切替利用は2プール制/on-demandで裏付け"
     },
     "claude-pro": {
       "hasDeal": true,
