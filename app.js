@@ -509,7 +509,8 @@
         freeTier: 'Free $0: 2,000 completions per month（公式）',
         specialDeal: '3rd party agents (Claude Code/Codex)・Model selection・$15 credits（Pro・公式）',
         sourceUrl: 'https://github.com/features/copilot/plans',
-        confirmedAt: '2026-11-16'
+        confirmedAt: '2026-11-16',
+        verificationNote: '2026-11-16公式features/copilot/plans確認: Pro $10確定・Student plan言及あり。年払$100・学割無料原文は記載なし=要確認'
       }
     },
     {
@@ -647,7 +648,10 @@
         annualDiscount: '要確認（Legacy のため新規向け比較の対象外）',
         studentDiscount: '要確認',
         freeTier: '要確認',
-        specialDeal: '公式に「They aren\'t available to new customers, but existing subscribers keep them until they switch or cancel」と明記'
+        specialDeal: '公式に「They aren\'t available to new customers, but existing subscribers keep them until they switch or cancel」と明記',
+        sourceUrl: 'https://cursor.com/help/account-and-billing/pricing',
+        confirmedAt: '2026-11-16',
+        verificationNote: '2026-11-16 Help Docs/Pricing確認: Legacy Pro $20/mo・Premium相当・年払$192/14日トライアル/学割の公式記載なし=要確認'
       }
     },
 
@@ -688,7 +692,8 @@
         freeTier: 'Free $0（公式）※Claude Code利用にはPro以上またはAPIが必要',
         specialDeal: 'Claude CodeはPro以上で利用可（公式）。5時間ごとリセット制',
         sourceUrl: 'https://claude.com/pricing',
-        confirmedAt: '2026-11-16'
+        confirmedAt: '2026-11-16',
+        verificationNote: '2026-11-16 公式Pricing原文確認: $20 if billed monthly / $17 Per month with annual subscription discount ($200 billed up front)。学割Pro価格の記載なし=要確認'
       }
     },
     {
@@ -758,7 +763,8 @@
         freeTier: '無料 ￥0 JPY/月（公式）＋Google AI Studio無料枠（トライアル原文は要確認）',
         specialDeal: '5TBストレージ・YouTube Premium Lite・Gemini 4 Argonアクセス（公式）',
         sourceUrl: 'https://gemini.google/subscriptions/',
-        confirmedAt: '2026-11-16'
+        confirmedAt: '2026-11-16',
+        verificationNote: '2026-11-16 日本地域公式ページ確認: ¥2,900/月確定。初月無料・年額16%OFF・学生割引の記載なし=要確認'
       }
     },
 
@@ -799,7 +805,8 @@
         freeTier: '無料 ￥0 JPY/月（公式）',
         specialDeal: '無料版の2倍使用量上限・400GBストレージ・Flow 200クレジット（公式）',
         sourceUrl: 'https://gemini.google/subscriptions/',
-        confirmedAt: '2026-11-16'
+        confirmedAt: '2026-11-16',
+        verificationNote: '2026-11-16 日本地域公式ページ確認: ¥725/月確定。年額7,250円の記載なし=要確認'
       }
     },
     {
@@ -835,7 +842,8 @@
         freeTier: '無料版ChatGPTあり（公式: Free is available to everyone）',
         specialDeal: 'Go＝Freeよりツール・アップロード・音声・メモリ増（公式）。半額以下帯の旧表現は要確認扱い',
         sourceUrl: 'https://openai.com/chatgpt/pricing/',
-        confirmedAt: '2026-11-16'
+        confirmedAt: '2026-11-16',
+        verificationNote: '2026-11-16 公式pricing確認: ページ・プラン名・FAQ（個人Goはmonthly plans）は確定。Go/Plus/Proの$数値はJS動的描画で原文取得不可=要確認'
       }
     },
     {
@@ -874,7 +882,8 @@
         studentDiscount: '学生キャンペーン最大1年無料は公式原文確認できず（要確認）',
         freeTier: '無料版あり旨は公式トップ表示のみで金額・回数条件は確認できず（要確認）',
         specialDeal: '出典URL確認後に再検証（代替URL探索を次段階）',
-        confirmedAt: '2026-11-16'
+        confirmedAt: '2026-11-16',
+        verificationNote: '2026-11-16: perplexity.ai/pricing 404、www.perplexity.aiに価格記載なし。sourceUrl確定できず（推測付与しない）。全項目要確認'
       }
     }
   ];
@@ -2146,8 +2155,10 @@
           if (plan.id === 'cursor-plus') {
             annualNote = '年払い $80/年（Help Docs記載）。';
           }
-          // ステージ30: 参考情報（検証メモ・出典URL・確認日）をデータ駆動で1行追加（既存年払い表記は維持）
-          const dealInfo = (dealsData && dealsData.subscriptions) ? dealsData.subscriptions[plan.id] : null;
+          // ステージ30修正: dealsData 反映前は内蔵master deal を fallback にする（データ駆動・最小変更）
+          const dealInfo = (dealsData && dealsData.subscriptions && dealsData.subscriptions[plan.id])
+            ? dealsData.subscriptions[plan.id]
+            : (plan.deal || null);
           let dealNote = '';
           if (dealInfo) {
             const src = (typeof dealInfo.sourceUrl === 'string' && dealInfo.sourceUrl.trim()) ? `（出典: ${dealInfo.sourceUrl}）` : '';
