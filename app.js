@@ -2122,7 +2122,12 @@
           ax1.appendChild(ax1Lbl);
           ax1.appendChild(ax1Val);
           ax1.appendChild(ax1ConstNote);
-          attachInteractiveDetail(ax1, `【支払負担 詳細】90日概算 ${costStr}。${taxCurrencyNote}。実際の決済時の為替レート・手数料・消費税等の請求条件により請求額は変動します。`);
+          // ステージ21: cursor-plusのみ年払い価格を補足表示（最小限変更・他プラン非表示）
+          let annualNote = '';
+          if (plan.id === 'cursor-plus') {
+            annualNote = '年払い $80/年（Help Docs記載）。';
+          }
+          attachInteractiveDetail(ax1, `【支払負担 詳細】90日概算 ${costStr}。${annualNote}${taxCurrencyNote}。実際の決済時の為替レート・手数料・消費税等の請求条件により請求額は変動します。`);
         } else {
           ax1Val.className = 'axis-value axis-pending';
           ax1Val.textContent = '保留 (公式未確認)';
