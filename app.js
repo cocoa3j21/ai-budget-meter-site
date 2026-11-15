@@ -388,12 +388,14 @@
       target: '低価格で自律エージェントの利用を試したい開発者',
       badge: '🔥 廉価Agent筆頭',
       deal: {
-        hasDeal: true,
-        badge: '🔥 月$60枠',
-        annualDiscount: '月額$10定額（上位Go Plusは$40／初月割引は要確認）',
-        studentDiscount: 'オープンソース貢献者コミュニティ特典あり',
-        freeTier: 'OpenCode CLI本体は永久無料（MITライセンス）',
-        specialDeal: '月$10でGLM-5・Kimi K2・DeepSeek・Qwen等の厳選モデルを最大$60相当までエージェント利用可能'
+        hasDeal: false,
+        badge: '⚠️ 出典未確認: 初月$5の公式記載なし',
+        annualDiscount: 'Go $10/月・Go Plus $40/月（公式確定）。初月$5・年払い割引は2026-11-16公式Goページで記載確認できず（要確認）',
+        studentDiscount: 'OSS貢献者特典は公式記載確認できず（要確認）',
+        freeTier: 'Free models（daily limit・公式）あり。CLI本体の永年無料はdocs側根拠（要確認）',
+        specialDeal: '月$10で厳選モデル利用可。上限枠は現行$15〜$100相当（公式）',
+        sourceUrl: 'https://opencode.ai/go',
+        confirmedAt: '2026-11-16'
       }
     },
     {
@@ -422,12 +424,14 @@
       target: 'Claude Code等のCLIエージェントに格安の頭脳（GLM-5）を繋いで開発したい人',
       badge: '⚡ トークン枠 (未確認)',
       deal: {
-        hasDeal: true,
-        badge: '🔥 初回割引 / トークンパック付与',
-        annualDiscount: 'Liteプラン $18/月（四半期・年払い割引の有無は要確認、上位Proは約$30/月）',
-        studentDiscount: '開発者・アカデミック向けキャンペーン随時実施',
-        freeTier: '新規登録時の初回ボーナストークン・お試し枠あり',
-        specialDeal: 'Claude CodeやOpenCodeの裏側モデルとして直結可能。トークンパック制のコーディング枠（※最新仕様未確認）'
+        hasDeal: false,
+        badge: '⚠️ 出典未確認: 初回割引の公式記載なし',
+        annualDiscount: 'Starting at just 18 USD per month（公式確定=$18）。四半期・年払い割引／上位Pro約$30は2026-11-16公式Overviewで記載確認できず（要確認）',
+        studentDiscount: 'キャンペーン・学割の公式記載確認できず（要確認）',
+        freeTier: '初回ボーナストークン枠の公式記載確認できず（要確認）',
+        specialDeal: 'Claude Code/OpenCode/ZCode等20+ツール対応（公式）。Lite=5時間2,000・週次10,000クレジット、off-peak 50%減（公式）',
+        sourceUrl: 'https://docs.z.ai/devpack/overview.md',
+        confirmedAt: '2026-11-16'
       }
     },
     {
@@ -456,12 +460,14 @@
       target: 'Kimi K2の高いコーディング推論力を安価な定額・パッケージ枠で活用したい開発者',
       badge: '🌙 K2エージェント対応',
       deal: {
-        hasDeal: true,
-        badge: '🔥 低価格K2枠 / 長文特化',
-        annualDiscount: '月額は要確認（プラン・チャージ特典の詳細は公式情報未取得）',
-        studentDiscount: 'なし',
-        freeTier: 'Webチャットおよび一部APIトライアル枠は無料利用可能',
-        specialDeal: 'Kimi K2 Thinking / CodingをClaude Code互換エンドポイントやOpenCodeから低コストで利用可能'
+        hasDeal: false,
+        badge: '⚠️ 国際価格の公式記載なし（中国向け¥99/¥948年のみ確定）',
+        annualDiscount: '中国向け Plus ¥99/月・¥948/年（月換算¥79・公式）。日本/USD価格・$10〜12相当は2026-11-16公式ヘルプで記載確認できず（要確認）',
+        studentDiscount: 'なし（公式記載なし）',
+        freeTier: '無料トライアル枠の公式記載なし（要確認）',
+        specialDeal: 'Plus以上でKimi Code利用可・5時間ローリング制限（公式）。月次共有クレジット・繰り越しなし（公式）',
+        sourceUrl: 'https://www.kimi.com/en/help/membership/membership-pricing',
+        confirmedAt: '2026-11-16'
       }
     },
     {
