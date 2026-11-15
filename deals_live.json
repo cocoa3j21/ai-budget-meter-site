@@ -42,14 +42,17 @@
       "verificationNote": "2026-11-16 公式ヘルプ確認: 中国価格¥99/¥948年のみ確定。国際価格・学割・初回特典の記載なし=要確認。5h制限/繰越なしは原文"
     },
     "github-copilot": {
-      "hasDeal": true,
-      "badge": "🔥 年払17%OFF / 学割無料",
-      "tag": "学生・教員無料 / 年払い割",
-      "annualDiscount": "年払い$100/年 (月換算 約$8.33・約17%OFF)",
-      "studentDiscount": "学生・教員・人気OSSメンテナーは完全無料（GitHub Student Dev Pack）",
-      "freeTier": "無料枠あり（月2,000補完＋50チャット・Agentリクエスト）＋30日体験",
-      "specialDeal": "年払い$100/年（月換算 約$8.33）。学生・教員・特定OSSメンテナー向けの無料提供制度あり（※要件確認が必要）",
-      "dealScore": 99
+      "hasDeal": false,
+      "badge": "⚠️ 年払$100/学割無料は公式料金ページで記載確認できず（要確認）",
+      "tag": "Pro $10/月確定 / Student planあり（内容要確認）/ 個人年払なし旨FAQ",
+      "annualDiscount": "Pro $10 USD per user/month・Pro+ $39・Max $100（公式確定）。年払い$100/年（月$8.33・17%OFF）の原文記載は2026-11-16公式Plansページで確認できず（要確認）",
+      "studentDiscount": "Verified students have access to the GitHub Copilot Student plan（公式原文）。無料／学割の具体的内容はLearn more先のため要確認",
+      "freeTier": "Free $0: 2,000 completions per month（公式）",
+      "specialDeal": "3rd party agents (Claude Code/Codex)・Model selection・$15 credits（Pro・公式）",
+      "dealScore": 99,
+      "sourceUrl": "https://github.com/features/copilot/plans",
+      "confirmedAt": "2026-11-16",
+      "verificationNote": "2026-11-16公式features/copilot/plans確認: Pro $10確定・Student plan言及あり。年払$100・学割無料原文は記載なし=要確認"
     },
     "windsurf": {
       "hasDeal": false,
@@ -79,13 +82,16 @@
     },
     "claude-pro": {
       "hasDeal": true,
-      "badge": "🔥 年払約17%OFF ($17〜18/月)",
-      "tag": "Claude Code利用権付帯",
-      "annualDiscount": "年払い契約で月換算 約$17〜$18（通常月払い$20から割引）",
-      "studentDiscount": "大学向け教育プラン展開あり",
-      "freeTier": "Webチャット無料枠あり（※Claude Code利用にはPro以上またはAPIが必要）",
-      "specialDeal": "最高峰のコーディング頭脳「Claude Code」をサブスク枠で直接利用可能（5時間ごとリセット制）",
-      "dealScore": 94
+      "badge": "🔥 年払割（前払$200・月換算$17・公式原文）",
+      "tag": "年払前払$200・$17/月換算は公式原文 / 学割Pro価格は要確認",
+      "annualDiscount": "Pro: $20 if billed monthly／年払い契約は月換算 $17・前払 $200（公式原文: $17 Per month with annual subscription discount ( $200 billed up front)）。旧『約$17〜18・約17%OFF』の幅・率表記は公式原文にない計算値のため要確認",
+      "studentDiscount": "学生向けPro価格割引の公式記載確認できず（要確認）",
+      "freeTier": "Free $0（公式）※Claude Code利用にはPro以上またはAPIが必要",
+      "specialDeal": "Claude CodeはPro以上で利用可（公式）。5時間ごとリセット制",
+      "dealScore": 94,
+      "sourceUrl": "https://claude.com/pricing",
+      "confirmedAt": "2026-11-16",
+      "verificationNote": "2026-11-16 公式Pricing原文確認: $20 if billed monthly / $17 Per month with annual subscription discount ($200 billed up front)。学割Pro価格の記載なし=要確認"
     },
     "chatgpt-plus": {
       "hasDeal": false,
@@ -98,44 +104,55 @@
       "dealScore": 88
     },
     "google-ai-pro": {
-      "hasDeal": true,
-      "badge": "🎁 初月無料 / 2TB付帯",
-      "tag": "年額割 / 2TBストレージ付",
-      "annualDiscount": "年額一括払いで実質約16%OFF（日本円定価 月2,900円）",
-      "studentDiscount": "学生向け割引・無料キャンペーン随時実施",
-      "freeTier": "1ヶ月無料トライアル＋Google AI Studio無料枠",
-      "specialDeal": "Gemini CLI / Julesエージェント利用枠に加え、Googleドライブ2TBとWorkspace連携が付帯",
-      "dealScore": 93
+      "hasDeal": false,
+      "badge": "⚠️ 初月無料・年額16%OFFは公式記載なし（要確認）",
+      "tag": "¥2,900/月は公式確定 / トライアル・年額割・学割価格は要確認",
+      "annualDiscount": "Google AI Pro ￥2,900 JPY / 月（公式確定・日本地域表示）。年額一括払い16%OFF・初月無料トライアルは2026-11-16公式ページで記載確認できず（要確認）",
+      "studentDiscount": "学生向け割引価格の公式記載確認できず（要確認）",
+      "freeTier": "無料 ￥0 JPY/月（公式）＋Google AI Studio無料枠（※1ヶ月無料トライアルの原文は本ページで確認できず=要確認）",
+      "specialDeal": "5TBストレージ・YouTube Premium Lite・Gemini 4 Argonアクセス（公式）。Antigravity標準レート制限（公式）",
+      "dealScore": 93,
+      "sourceUrl": "https://gemini.google/subscriptions/",
+      "confirmedAt": "2026-11-16",
+      "verificationNote": "2026-11-16 日本地域公式ページ確認: ¥2,900/月確定。初月無料・年額16%OFF・学生割引の記載なし=要確認"
     },
     "google-ai-plus": {
-      "hasDeal": true,
-      "badge": "🔥 月700円台〜 / 年払割",
-      "tag": "超低価格エントリー",
-      "annualDiscount": "年払い約7,250円（月換算 約600円〜725円前後）の超破格設定",
-      "studentDiscount": "なし",
-      "freeTier": "無料版Geminiあり",
-      "specialDeal": "月700円台でGemini上位モデル・Deep Research・Gmail/Docs連携が使えるライト層向けプラン",
-      "dealScore": 95
+      "hasDeal": false,
+      "badge": "⚠️ 年額約7,250円は公式記載なし（要確認）",
+      "tag": "¥725/月は公式確定 / 年額割は要確認",
+      "annualDiscount": "Google AI Plus ￥725 JPY / 月（公式確定）。年払い約7,250円（月換算600〜725円）の原文記載は確認できず（要確認）",
+      "studentDiscount": "なし（公式記載なし）",
+      "freeTier": "無料 ￥0 JPY/月（公式）",
+      "specialDeal": "無料版の2倍使用量上限・400GBストレージ・Flow 200クレジット（公式）",
+      "dealScore": 95,
+      "sourceUrl": "https://gemini.google/subscriptions/",
+      "confirmedAt": "2026-11-16",
+      "verificationNote": "2026-11-16 日本地域公式ページ確認: ¥725/月確定。年額7,250円の記載なし=要確認"
     },
     "chatgpt-go": {
       "hasDeal": false,
-      "badge": "💰 低価格ライト枠 ($8〜10)",
-      "tag": "チャット制限緩和プラン",
-      "annualDiscount": "月額約1,400〜1,500円前後（約$8〜$10・地域により順次展開）",
-      "studentDiscount": "なし",
-      "freeTier": "無料版ChatGPTあり",
-      "specialDeal": "Plus（$20）の半額以下で日常のチャット回数制限を緩和したいライトユーザー向け",
-      "dealScore": 84
+      "badge": "💰 低価格ライト枠（金額は公式ページで要確認）",
+      "tag": "個人Go/Plusはmonthlyのみ旨FAQ原文あり / 金額は動的表示で要確認",
+      "annualDiscount": "月額約$8〜10・約1,400〜1,500円は2026-11-16公式pricingで金額が動的表示のため数値原文確認できず（要確認）。FAQ原文: We offer monthly plans for Go, Plus and Business and annual plans for Business and Enterprise＝個人Goは年払い提供なし旨（確定）",
+      "studentDiscount": "なし（学生向けはChatGPT for Teachers／ChatGPT Edu等の教育プランでありGo割引の原文なし=要確認）",
+      "freeTier": "無料版ChatGPTあり（公式: Free is available to everyone）",
+      "specialDeal": "Plus等の半額以下帯という旧表現は金額原文未確認のため要確認扱い。Go＝Freeよりツール・アップロード・音声・メモリが増えるプラン（公式）",
+      "dealScore": 84,
+      "sourceUrl": "https://openai.com/chatgpt/pricing/",
+      "confirmedAt": "2026-11-16",
+      "verificationNote": "2026-11-16 公式pricing確認: ページ・プラン名・FAQ（個人Goはmonthly plans）は確定。Go/Plus/Proの$数値はJS動的描画で原文取得不可=要確認"
     },
     "perplexity-pro": {
-      "hasDeal": true,
-      "badge": "🎓 学割 / 年払17%OFF",
-      "tag": "学割・紹介特典 / 年払17%OFF",
-      "annualDiscount": "年払い$200/年 (月換算 約$16.67・約17%OFF)",
-      "studentDiscount": "学生キャンペーンで最大1年無料・割引あり",
-      "freeTier": "無料版で無制限クイック検索＋毎日数回のPro Search",
-      "specialDeal": "GPT-5やClaude Sonnet 4.5を横断して出典付きの高速Webリサーチが可能",
-      "dealScore": 89
+      "hasDeal": false,
+      "badge": "⚠️ 出典URL特定できず: 公式料金ページの原文確認未完成（要確認）",
+      "tag": "年払$200・学割最大1年無料は公式原文で確認できず（要確認）",
+      "annualDiscount": "年払い$200/年（月$16.67・17%OFF）は2026-11-16に公式料金ページ（www.perplexity.ai/pricing HTTP 404・トップページに価格記載なし）で原文確認できず（要確認）",
+      "studentDiscount": "学生キャンペーン最大1年無料は公式原文確認できず（要確認）",
+      "freeTier": "無料版あり旨は公式トップ表示のみで金額・回数条件は確認できず（要確認）",
+      "specialDeal": "出典URL確認後に再検証（代替: docs/help系URL探索を次段階）",
+      "dealScore": 89,
+      "confirmedAt": "2026-11-16",
+      "verificationNote": "2026-11-16: perplexity.ai/pricing 404、www.perplexity.aiに価格記載なし。sourceUrl確定できず（推測付与しない）。全項目要確認"
     }
   },
   "models": {
