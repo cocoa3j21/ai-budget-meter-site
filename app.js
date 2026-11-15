@@ -2146,7 +2146,18 @@
           if (plan.id === 'cursor-plus') {
             annualNote = '年払い $80/年（Help Docs記載）。';
           }
-          attachInteractiveDetail(ax1, `【支払負担 詳細】90日概算 ${costStr}。${annualNote}${taxCurrencyNote}。実際の決済時の為替レート・手数料・消費税等の請求条件により請求額は変動します。`);
+          // ステージ30: 参考情報（検証メモ・出典URL・確認日）をデータ駆動で1行追加（既存年払い表記は維持）
+          const dealInfo = (dealsData && dealsData.subscriptions) ? dealsData.subscriptions[plan.id] : null;
+          let dealNote = '';
+          if (dealInfo) {
+            const src = (typeof dealInfo.sourceUrl === 'string' && dealInfo.sourceUrl.trim()) ? `（出典: ${dealInfo.sourceUrl}）` : '';
+            const cfm = (typeof dealInfo.confirmedAt === 'string' && dealInfo.confirmedAt.trim()) ? ` 確認日: ${dealInfo.confirmedAt}` : '';
+            const vnote = (typeof dealInfo.verificationNote === 'string' && dealInfo.verificationNote.trim()) ? dealInfo.verificationNote : '';
+            if (vnote || src || cfm) {
+              dealNote = ` 【参考情報】${vnote}${src}${cfm}`;
+            }
+          }
+          attachInteractiveDetail(ax1, `【支払負担 詳細】90日概算 ${costStr}。${annualNote}${taxCurrencyNote}。実際の決済時の為替レート・手数料・消費税等の請求条件により請求額は変動します。${dealNote}`);
         } else {
           ax1Val.className = 'axis-value axis-pending';
           ax1Val.textContent = '保留 (公式未確認)';
