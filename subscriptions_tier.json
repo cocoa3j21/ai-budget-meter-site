@@ -421,8 +421,8 @@
           "score": 10.0,
           "max": 30.0,
           "status": "dynamic_fair_use",
-          "label": "週次プール(数値非公表)",
-          "note": "全有料プランに Cursor モデル用の週次プール（weekly pool）が付与されると公式明記だが、プールの具体的な数値は非公表のため動的制限(dynamic_fair_use)の10点。利用枠の対象は Cursor 独自モデル(Grok / Composer)のみで、Claude / GPT / Gemini などサードパーティモデルは Plus の利用枠に含まれない。"
+          "label": "Shared AI usage pool（数値非公表）",
+          "note": "Shared AI usage pool（数値非公表）。利用枠を使い切った場合はtop-upsを購入するか、週次プールの回復を待つ。"
         },
         "fit": {
           "score": 25.0,
@@ -452,7 +452,7 @@
       },
       "budget": {
         "is_over_budget_90d": false,
-        "cost_90d_yen": 4185.0,
+        "cost_90d_yen": 3720.0,
         "upfront_payment_yen": null,
         "minimum_total_yen": null,
         "note": "90日概算が予算15,000円以内であっても、月ごとの請求額が5,000円以内とは断定しません"
@@ -473,22 +473,24 @@
       "verification_records": {
         "target_plan_name": "Cursor Plus (The X Subscription)",
         "fetched_at": "2026-10-22T10:13:00Z",
-        "currency_basis": "USD表示 (Plus $8/mo)",
+        "currency_basis": "USD表示 (Plus $8/mo - 年払い$80/yr)",
         "quotes": {
-          "payment": "Plan Price Included usage Free $0 Limited Plus $8/mo Base Premium $30/mo 4x Plus Super $100/mo 15x Plus Ultra $200/mo 50x Plus (https://cursor.com/help/account-and-billing/pricing)",
+          "payment": "Plus $8/mo - 年払い$80/yr - top-ups optional (Help Docs: https://cursor.com/help/account-and-billing/pricing / 2026-11-14確認)",
           "quota": "Every paid plan includes a weekly pool of usage for Cursor models (Grok 4.7, Grok 4.6, Grok 4.5, and Composer 2.5), shared across Cursor and Grok. (https://cursor.com/help/account-and-billing/pricing)",
           "fit": "Agent is Cursor's assistant that can complete complex coding tasks independently, run terminal commands, and edit code. Access in sidepane with Cmd+I. (https://cursor.com/docs/agent/overview.md) / Plus runs those models at fixed settings (Fast off, medium effort) without Auto, Cloud Agents, Automations, Bugbot, Origin, or third-party models. Premium and above add all of those, with third-party models at API list price paid from prepaid credit. (https://cursor.com/help/account-and-billing/pricing)",
           "continuity": "Every paid plan includes a weekly pool of usage for Cursor models... shared across Cursor and Grok. (https://cursor.com/help/account-and-billing/pricing)"
         }
       },
       "work_capacity": {
-        "hours_summary": "利用枠の詳細は未確認",
+        "hours_summary": "Shared AI usage pool（量未確認）",
         "cycle_type": "weekly",
-        "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
+        "detail_hint": "公式表記は『Plus $8/mo - Shared AI usage pool』。具体的な量は未確認。利用枠を使い切った場合はtop-upsを購入するか、週次プールの回復を待つ。"
       },
       "verified_at": "2026-10-22T10:13:00Z",
       "scored_at": "2026-10-25T10:11:56.042510+00:00",
-      "campaign_evaluation": null
+      "campaign_evaluation": null,
+      "top_ups": "optional",
+      "additional_charges": "optional"
     },
     {
       "plan_id": "google-ai-pro",

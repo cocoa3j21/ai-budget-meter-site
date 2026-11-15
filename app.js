@@ -544,12 +544,12 @@
       provider: 'Anysphere',
       priceUSD: 8,
       priceLabel: '$8 / 月',
-      priceNote: '年払い $80/年（公式）',
-      apiEquivalent: '💡 利用枠: Cursor 独自モデル(Grok/Composer)の週次プール（数値は非公表・Claude/GPT/Gemini は含まれない）',
+      priceNote: '年払い $80/年（Help Docs記載）',
+      apiEquivalent: '💡 利用枠: Shared AI usage pool（Base・数値非公表・PlusではCursorモデルのみ。サードパーティモデルは含まれない）。利用枠を使い切った場合はtop-upsを購入するか、週次プールの回復を待つ（Help Docs / 2026-11-14確認）',
       tokenRefresh: {
         type: 'weekly',
-        badge: '📅 週次プール制',
-        desc: '全有料プランに Cursor モデル用の週次プールが付与される（公式）'
+        badge: '📅 週次回復制 (Shared pool)',
+        desc: '公式ヘルプに基づき毎週回復する利用プール（Shared AI usage pool）。回復量は量未確認。利用枠を使い切った場合はtop-upsを購入するか、週次プールの回復を待つ（Help Docs / 2026-11-14確認）'
       },
       scoreBreakdown: { quota: 10, refresh: 3, agent: 25, price: 26.32, perk: 0 },
       tier: 'entry',
@@ -566,7 +566,7 @@
       deal: {
         hasDeal: false,
         badge: '',
-        annualDiscount: '年払い $80/年（公式）',
+        annualDiscount: '年払い $80/年（Help Docs記載）',
         studentDiscount: '要確認',
         freeTier: 'Free $0（Limited）',
         specialDeal: 'Auto / Cloud Agents / サードパーティモデルは非対応（Premium 以上で利用可）'
