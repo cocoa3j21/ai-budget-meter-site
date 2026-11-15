@@ -43,14 +43,17 @@
       "dealScore": 99
     },
     "windsurf": {
-      "hasDeal": true,
-      "badge": "🔥 年払17%OFF ($12.5/月)",
-      "tag": "年払い割引 / 無料お試し枠",
-      "annualDiscount": "年払い$150/年 (月換算 $12.50・約17%OFF)",
-      "studentDiscount": "学割プログラム展開中",
-      "freeTier": "無料プランあり（基本補完・初回Cascadeクレジット付与）",
-      "specialDeal": "Cursor比で月$5〜$7.5安く、自律度の高いCascadeエージェント環境を提供",
-      "dealScore": 92
+      "hasDeal": false,
+      "badge": "⚠️ 出典未確認: 年払割引の公式記載なし",
+      "tag": "年払い割引・学割・トライアルは公式記載なし（要確認）",
+      "annualDiscount": "年払い$150/年（月換算$12.50・約17%OFF）は2026-11-16公式Pricingで記載確認できず（要確認）。月額Pro $20 / Max $200 は公式確定",
+      "studentDiscount": "学生割引は公式記載なし（要確認）",
+      "freeTier": "Free $0（Light quota・Limited model availability・公式）",
+      "specialDeal": "Pro $20/mo・Max $200/mo・Teams $80+$40/seat（公式）。利用枠はdaily・weekly basisで回復、上限超過時はPurchase extra usage at API pricing（公式）",
+      "dealScore": 92,
+      "sourceUrl": "https://windsurf.com/pricing",
+      "confirmedAt": "2026-11-16",
+      "verificationNote": "2026-11-16 公式Plans and Pricing確認: 年払$150・$12.5・17%OFF・学割・無料トライアルクレジットの記載なし=要確認。Pro $20/purchase extra usageは公式原文"
     },
     "cursor-pro": {
       "hasDeal": false,

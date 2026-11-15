@@ -532,10 +532,12 @@
       deal: {
         hasDeal: false,
         badge: '',
-        annualDiscount: '要確認（公式 pricing に年払い記載なし）',
-        studentDiscount: '要確認',
+        annualDiscount: '要確認（2026-11-16 公式Pricingに年払い$150/17%OFFの記載なし）',
+        studentDiscount: '要確認（公式記載なし）',
         freeTier: 'Free $0（Light quota・Limited model availability）',
-        specialDeal: '上限到達時は Pro では追加購入（Purchase extra usage）で継続'
+        specialDeal: '上限到達時は Pro では追加購入（Purchase extra usage at API pricing）で継続（公式）',
+        sourceUrl: 'https://windsurf.com/pricing',
+        confirmedAt: '2026-11-16'
       }
     },
     {
