@@ -763,7 +763,15 @@
       },
       "verified_at": "2026-10-21T02:27:00Z",
       "scored_at": "2026-10-25T10:11:56.042510+00:00",
-      "campaign_evaluation": null
+      "campaign_evaluation": null,
+      "annual": {
+        "amount": 200,
+        "currency": "USD",
+        "period": "year",
+        "sourceUrl": "https://claude.com/pricing",
+        "confirmedAt": "2026-11-16",
+        "note": "公式原文: $200 billed up front"
+      }
     },
     {
       "plan_id": "chatgpt-plus",
@@ -1014,7 +1022,15 @@
       },
       "verified_at": "2026-10-22T10:13:00Z",
       "scored_at": "2026-10-25T10:11:56.042510+00:00",
-      "campaign_evaluation": null
+      "campaign_evaluation": null,
+      "annual": {
+        "amount": 300,
+        "currency": "USD",
+        "period": "year",
+        "sourceUrl": "https://cursor.com/help/account-and-billing/pricing",
+        "confirmedAt": "2026-11-16",
+        "note": "Help Docs記載"
+      }
     },
     {
       "plan_id": "cursor-pro",
