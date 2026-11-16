@@ -395,7 +395,8 @@
         freeTier: 'Free models（daily limit・公式）あり。CLI本体の永年無料はdocs側根拠（要確認）',
         specialDeal: '月$10で厳選モデル利用可。上限枠は現行$15〜$100相当（公式）',
         sourceUrl: 'https://opencode.ai/go',
-        confirmedAt: '2026-11-16'
+        confirmedAt: '2026-11-16',
+        verificationNote: '2026-11-16 公式Goページ確認: Plans start at $10/月・Go Plus $40・初月$5記載なし=要確認。上限枠$15〜$100は原文記載'
       }
     },
     {
@@ -431,7 +432,8 @@
         freeTier: '初回ボーナストークン枠の公式記載確認できず（要確認）',
         specialDeal: 'Claude Code/OpenCode/ZCode等20+ツール対応（公式）。Lite=5時間2,000・週次10,000クレジット、off-peak 50%減（公式）',
         sourceUrl: 'https://docs.z.ai/devpack/overview.md',
-        confirmedAt: '2026-11-16'
+        confirmedAt: '2026-11-16',
+        verificationNote: '2026-11-16 公式devpack Overview確認: $18/月確定・初回/四半期/年払割引・学割・初回ボーナスの記載なし=要確認。クレジット枠/off-peak50%は原文'
       }
     },
     {
@@ -467,7 +469,8 @@
         freeTier: '無料トライアル枠の公式記載なし（要確認）',
         specialDeal: 'Plus以上でKimi Code利用可・5時間ローリング制限（公式）。月次共有クレジット・繰り越しなし（公式）',
         sourceUrl: 'https://www.kimi.com/en/help/membership/membership-pricing',
-        confirmedAt: '2026-11-16'
+        confirmedAt: '2026-11-16',
+        verificationNote: '2026-11-16 公式ヘルプ確認: 中国価格¥99/¥948年のみ確定。国際価格・学割・初回特典の記載なし=要確認。5h制限/繰越なしは原文'
       }
     },
     {
@@ -546,7 +549,8 @@
         freeTier: 'Free $0（Light quota・Limited model availability）',
         specialDeal: '上限到達時は Pro では追加購入（Purchase extra usage at API pricing）で継続（公式）',
         sourceUrl: 'https://windsurf.com/pricing',
-        confirmedAt: '2026-11-16'
+        confirmedAt: '2026-11-16',
+        verificationNote: '2026-11-16 公式Plans and Pricing確認: 年払$150・$12.5・17%OFF・学割・無料トライアルクレジットの記載なし=要確認。Pro $20/purchase extra usageは公式原文'
       }
     },
     {
@@ -651,7 +655,7 @@
         specialDeal: '公式に「They aren\'t available to new customers, but existing subscribers keep them until they switch or cancel」と明記',
         sourceUrl: 'https://cursor.com/help/account-and-billing/pricing',
         confirmedAt: '2026-11-16',
-        verificationNote: '2026-11-16 Help Docs/Pricing確認: Legacy Pro $20/mo・Premium相当・年払$192/14日トライアル/学割の公式記載なし=要確認'
+        verificationNote: '2026-11-16 Help Docs/Pricing一次確認: 年払$192・14日間トライアル・学生割引の公式記載なし=要確認。切替利用は2プール制/on-demandで裏付け'
       }
     },
 
@@ -2171,7 +2175,7 @@
           const isJpyNative = plan.id === 'google-ai-pro';
           const taxCurrencyNote = isJpyNative
             ? '日本円表示の公式表示価格(税の扱いは各社の表示による)。他のUSD表示プランの概算とは基準が異なります'
-            : '公式表示価格(税の扱いは各社の表示による)を指定為替で換算した90日概算。実際の請求額や為替手数料・消費税等の請求条件により請求額は変動します';
+            : '公式表示価格(税の扱いは各社の表示による)を指定為替で換算した90日概算';
           ax1Val.textContent = `${pScores.score.toFixed(2)} 点 (90日 ${costStr})`;
           const ax1ConstNote = document.createElement('span');
           ax1ConstNote.className = 'axis-constant-note';
@@ -2179,10 +2183,14 @@
           ax1.appendChild(ax1Lbl);
           ax1.appendChild(ax1Val);
           ax1.appendChild(ax1ConstNote);
-          // ステージ21: cursor-plusのみ年払い価格を補足表示（最小限変更・他プラン非表示）
+          // ステージ32: 年払い表示を一般化（tier JSON の annual フィールドのデータ駆動・フィールド欠如プランは非表示）
           let annualNote = '';
-          if (plan.id === 'cursor-plus') {
-            annualNote = '年払い $80/年（Help Docs記載）。';
+          const annualInfo = evalInfo.annual;
+          if (annualInfo && typeof annualInfo.amount === 'number') {
+            const unit = annualInfo.currency === 'USD' ? '$' : (annualInfo.currency || '');
+            const periodJa = annualInfo.period === 'year' ? '/年' : (annualInfo.period === 'month' ? '/月' : ('/' + (annualInfo.period || '')));
+            const aNote = (typeof annualInfo.note === 'string' && annualInfo.note.trim()) ? `（${annualInfo.note.trim()}）` : '';
+            annualNote = `年払い ${unit}${annualInfo.amount}${periodJa}${aNote}。`;
           }
           // ステージ31: 参考情報生成は共通ヘルパーへ移行（ステージ30と同一文言・データ駆動・最小変更）
           const dealNoteText = buildDealNote(resolveDealInfo(plan.id));

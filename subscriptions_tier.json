@@ -490,7 +490,15 @@
       "scored_at": "2026-10-25T10:11:56.042510+00:00",
       "campaign_evaluation": null,
       "top_ups": "optional",
-      "additional_charges": "optional"
+      "additional_charges": "optional",
+      "annual": {
+        "amount": 80,
+        "currency": "USD",
+        "period": "year",
+        "sourceUrl": "https://cursor.com/help/account-and-billing/pricing",
+        "confirmedAt": "2026-11-14",
+        "note": "Help Docs記載"
+      }
     },
     {
       "plan_id": "google-ai-pro",
