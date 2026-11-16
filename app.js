@@ -501,16 +501,16 @@
       badgeStudent: '🎓 公式検証対象 / 学割対象',
       deal: {
         hasDeal: false,
-        badge: '⚠️ 年払$100/学割無料は公式料金ページで記載確認できず（要確認）',
-        badgeGeneral: '⚠️ 年払割引は公式料金ページで記載確認できず（要確認）',
-        badgeStudent: 'Student plan言及あり（内容要確認）',
-        annualDiscount: 'Pro $10 USD per user/month・Pro+ $39・Max $100（公式確定）。年払い$100/年（月$8.33・17%OFF）の原文記載は2026-11-16公式Plansページで確認できず（要確認）',
-        studentDiscount: 'Verified students have access to the GitHub Copilot Student plan（公式原文）。無料／学割の具体的内容はLearn more先のため要確認',
+        badge: '⚠️ 個人年払$100は公式ページ記載なし（要確認）/ Copilot Student無料はEducation原文で確定',
+        badgeGeneral: '⚠️ 年払割引は公式pricing/plans/docsに記載なし（要確認）',
+        badgeStudent: '🎓 GitHub Copilot Student 無料アクセス（公式原文）/ 期間・プラン内容は要確認',
+        annualDiscount: 'Pro $10 USD per user/month・Pro+ $39・Max $100（公式確定）。個人年払い$100/年（月$8.33・17%OFF）の記載は2026-11-16にfeatures/copilot/plansとdocs.github.com/en/copilot/get-started/plansの両方で確認できず（要確認）',
+        studentDiscount: 'Verified students have access to the GitHub Copilot Student plan（features/copilot/plans原文）＋GitHub Education原文「free access to the same tools professional developers use, including GitHub Copilot Student」（2026-11-16 education.github.com/benefits確認）。対象=学生認証は確定。期間・更新条件・プラン階層（Pro/Pro+相当）の原文なし=要確認',
         freeTier: 'Free $0: 2,000 completions per month（公式）',
         specialDeal: '3rd party agents (Claude Code/Codex)・Model selection・$15 credits（Pro・公式）',
         sourceUrl: 'https://github.com/features/copilot/plans',
         confirmedAt: '2026-11-16',
-        verificationNote: '2026-11-16公式features/copilot/plans確認: Pro $10確定・Student plan言及あり。年払$100・学割無料原文は記載なし=要確認'
+        verificationNote: '2026-11-16三出典確認: features/copilot/plans（Pro $10・Student plan言及）、education.github.com/benefits（Copilot Student無料アクセス原文）、docs.github.com/en/copilot/get-started/plans（年払記載なし）。個人年払・Student期間/階層=要確認'
       }
     },
     {
@@ -875,15 +875,16 @@
       badgeStudent: '🎓 学割 / 検索特化',
       deal: {
         hasDeal: false,
-        badge: '⚠️ 出典URL特定できず: 公式料金ページの原文確認未完成（要確認）',
-        badgeGeneral: '⚠️ 年払$200・17%OFFは公式原文確認できず（要確認）',
-        badgeStudent: '⚠️ 学生キャンペーン最大1年無料は公式原文確認できず（要確認）',
-        annualDiscount: '年払い$200/年（月$16.67・17%OFF）は2026-11-16に公式料金ページ（www.perplexity.ai/pricing HTTP 404・トップに価格記載なし）で原文確認できず（要確認）',
-        studentDiscount: '学生キャンペーン最大1年無料は公式原文確認できず（要確認）',
-        freeTier: '無料版あり旨は公式トップ表示のみで金額・回数条件は確認できず（要確認）',
-        specialDeal: '出典URL確認後に再検証（代替URL探索を次段階）',
+        badge: '💰 Pro $20/月・$200/年（2026-11-16公式FAQ原文確定）/ 学割は要確認',
+        badgeGeneral: '💰 $20/month or $200/year（公式FAQ原文）/ 学割記載なし=要確認',
+        badgeStudent: '⚠️ 学生向け割引は公式FAQに記載なし（要確認）',
+        annualDiscount: 'Perplexity Pro is $20/month or $200/year（公式FAQ原文・2026-11-16 www.perplexity.ai/hub 確認）。月換算額・割引率の記載は公式にないため派生値は表示しない',
+        studentDiscount: '学生向け割引の記載は公式FAQになし（2026-11-16 www.perplexity.ai/hub 確認）=要確認',
+        freeTier: 'Perplexity is free to use for core search（公式FAQ原文・2026-11-16確認）。無料枠の回数条件の原文は未取得=要確認',
+        specialDeal: 'ProでPro Search・Projects・file uploads・image generation・higher limitsが解放（公式FAQ原文）。www.perplexity.ai/pricingは404継続、hubページFAQが現行の一次出典',
+        sourceUrl: 'https://www.perplexity.ai/hub',
         confirmedAt: '2026-11-16',
-        verificationNote: '2026-11-16: perplexity.ai/pricing 404、www.perplexity.aiに価格記載なし。sourceUrl確定できず（推測付与しない）。全項目要確認'
+        verificationNote: '2026-11-16 www.perplexity.ai/hub FAQ原文確認: "Perplexity Pro is $20/month or $200/year"。月額/年額確定。学生割引の記載なし=要確認（pricingページ404は継続・hub FAQを一次出典とする）'
       }
     }
   ];
@@ -1667,6 +1668,23 @@
     return String(text == null ? '' : text).replace(/[。．.\s]+$/, '');
   }
 
+  // ステージ31: deal参考情報の解決と1行ノート生成を共通化（ax1詳細とchat-only価格セルで共用・文言はステージ30と同一）
+  function resolveDealInfo(planId) {
+    if (dealsData && dealsData.subscriptions && dealsData.subscriptions[planId]) {
+      return dealsData.subscriptions[planId];
+    }
+    const master = subscriptionPlans.find(x => x.id === planId) || SUBSCRIPTION_PLANS.find(x => x.id === planId);
+    return (master && master.deal) || null;
+  }
+  function buildDealNote(dealInfo) {
+    if (!dealInfo) return '';
+    const src = (typeof dealInfo.sourceUrl === 'string' && dealInfo.sourceUrl.trim()) ? `（出典: ${dealInfo.sourceUrl}）` : '';
+    const cfm = (typeof dealInfo.confirmedAt === 'string' && dealInfo.confirmedAt.trim()) ? ` 確認日: ${dealInfo.confirmedAt}` : '';
+    const vnote = (typeof dealInfo.verificationNote === 'string' && dealInfo.verificationNote.trim()) ? dealInfo.verificationNote : '';
+    if (vnote || src || cfm) return `【参考情報】${vnote}${src}${cfm}`;
+    return '';
+  }
+
   /**
    * 日本時間（Asia/Tokyo）の今日を YYYY-MM-DD で返す。
    * テスト用に window.__TODAY__ が YYYY-MM-DD 形式で注入されていればそれを優先する。
@@ -2022,6 +2040,17 @@
         tdPriceDeal.appendChild(metaDiv);
       }
 
+      // ステージ31: chat-onlyプラン（tier評価対象外・evalInfoなし）も価格セルに参考情報（確認日・要確認・出典URL）を表示
+      if (!evalInfo && plan.planGroup === 'chat-only') {
+        const refDealNote = buildDealNote(resolveDealInfo(plan.id));
+        if (refDealNote) {
+          const refDiv = document.createElement('div');
+          refDiv.className = 'tier-meta-row sub-reference-detail';
+          refDiv.textContent = refDealNote;
+          tdPriceDeal.appendChild(refDiv);
+        }
+      }
+
       // 独自コスパ評価ボックス（4軸は開閉パネルへ）
       if (evalInfo) {
         const evalBox = document.createElement('div');
@@ -2155,19 +2184,9 @@
           if (plan.id === 'cursor-plus') {
             annualNote = '年払い $80/年（Help Docs記載）。';
           }
-          // ステージ30修正: dealsData 反映前は内蔵master deal を fallback にする（データ駆動・最小変更）
-          const dealInfo = (dealsData && dealsData.subscriptions && dealsData.subscriptions[plan.id])
-            ? dealsData.subscriptions[plan.id]
-            : (plan.deal || null);
-          let dealNote = '';
-          if (dealInfo) {
-            const src = (typeof dealInfo.sourceUrl === 'string' && dealInfo.sourceUrl.trim()) ? `（出典: ${dealInfo.sourceUrl}）` : '';
-            const cfm = (typeof dealInfo.confirmedAt === 'string' && dealInfo.confirmedAt.trim()) ? ` 確認日: ${dealInfo.confirmedAt}` : '';
-            const vnote = (typeof dealInfo.verificationNote === 'string' && dealInfo.verificationNote.trim()) ? dealInfo.verificationNote : '';
-            if (vnote || src || cfm) {
-              dealNote = ` 【参考情報】${vnote}${src}${cfm}`;
-            }
-          }
+          // ステージ31: 参考情報生成は共通ヘルパーへ移行（ステージ30と同一文言・データ駆動・最小変更）
+          const dealNoteText = buildDealNote(resolveDealInfo(plan.id));
+          const dealNote = dealNoteText ? ` ${dealNoteText}` : '';
           attachInteractiveDetail(ax1, `【支払負担 詳細】90日概算 ${costStr}。${annualNote}${taxCurrencyNote}。実際の決済時の為替レート・手数料・消費税等の請求条件により請求額は変動します。${dealNote}`);
         } else {
           ax1Val.className = 'axis-value axis-pending';
