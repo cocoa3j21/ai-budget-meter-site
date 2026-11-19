@@ -1,6 +1,6 @@
 {
   "version": "1.5.0",
-  "generated_at": "2026-10-25T10:11:56.042510+00:00",
+  "generated_at": "2026-11-19T00:29:07.488797+00:00",
   "evaluation_title": "料金・公開仕様に基づく独自コスパ評価",
   "evaluation_profile": "日本の一般個人が月5,000円以内でAIコーディング作業を任せる用途",
   "scoring_rule_version": "2026-10-tier-v1",
@@ -140,7 +140,7 @@
         "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
       },
       "verified_at": "2026-10-21T02:23:00Z",
-      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "scored_at": "2026-11-19T00:29:07.488797+00:00",
       "campaign_evaluation": null
     },
     {
@@ -227,7 +227,7 @@
         "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
       },
       "verified_at": "2026-10-21T02:20:00Z",
-      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "scored_at": "2026-11-19T00:29:07.488797+00:00",
       "campaign_evaluation": {
         "plan_id": "github-copilot",
         "plan_name": "GitHub Copilot Pro",
@@ -312,7 +312,7 @@
           "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
         },
         "verified_at": "2026-10-21T02:20:00Z",
-        "scored_at": "2026-10-25T10:11:56.042510+00:00"
+        "scored_at": "2026-11-19T00:29:07.488797+00:00"
       }
     },
     {
@@ -398,7 +398,7 @@
         "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
       },
       "verified_at": "2026-10-21T02:32:00Z",
-      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "scored_at": "2026-11-19T00:29:07.488797+00:00",
       "campaign_evaluation": null
     },
     {
@@ -422,7 +422,7 @@
           "max": 30.0,
           "status": "dynamic_fair_use",
           "label": "Shared AI usage pool（数値非公表）",
-          "note": "Shared AI usage pool（数値非公表）。利用枠を使い切った場合はtop-upsを購入するか、週次プールの回復を待つ。"
+          "note": "Shared AI usage pool（数値非公表）。利用枠を使い切った場合はtop-upsを購入するか、週次プールの回復を待つ（公式出典: https://cursor.com/help/account-and-billing/pricing / 2026-11-14確認）。"
         },
         "fit": {
           "score": 25.0,
@@ -472,7 +472,7 @@
       "price_jpy": null,
       "verification_records": {
         "target_plan_name": "Cursor Plus (The X Subscription)",
-        "fetched_at": "2026-10-22T10:13:00Z",
+        "fetched_at": "2026-11-14T10:00:00Z",
         "currency_basis": "USD表示 (Plus $8/mo - 年払い$80/yr)",
         "quotes": {
           "payment": "Plus $8/mo - 年払い$80/yr - top-ups optional (Help Docs: https://cursor.com/help/account-and-billing/pricing / 2026-11-14確認)",
@@ -486,11 +486,9 @@
         "cycle_type": "weekly",
         "detail_hint": "公式表記は『Plus $8/mo - Shared AI usage pool』。具体的な量は未確認。利用枠を使い切った場合はtop-upsを購入するか、週次プールの回復を待つ。"
       },
-      "verified_at": "2026-10-22T10:13:00Z",
-      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "verified_at": "2026-11-14T10:00:00Z",
+      "scored_at": "2026-11-19T00:29:07.488797+00:00",
       "campaign_evaluation": null,
-      "top_ups": "optional",
-      "additional_charges": "optional",
       "annual": {
         "amount": 80,
         "currency": "USD",
@@ -580,7 +578,7 @@
         "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
       },
       "verified_at": "2026-10-22T10:16:00Z",
-      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "scored_at": "2026-11-19T00:29:07.488797+00:00",
       "campaign_evaluation": {
         "plan_id": "google-ai-pro",
         "plan_name": "Google AI Pro",
@@ -675,7 +673,7 @@
           "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
         },
         "verified_at": "2026-10-22T10:16:00Z",
-        "scored_at": "2026-10-25T10:11:56.042510+00:00"
+        "scored_at": "2026-11-19T00:29:07.488797+00:00"
       }
     },
     {
@@ -762,7 +760,7 @@
         "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
       },
       "verified_at": "2026-10-21T02:27:00Z",
-      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "scored_at": "2026-11-19T00:29:07.488797+00:00",
       "campaign_evaluation": null,
       "annual": {
         "amount": 200,
@@ -855,7 +853,7 @@
         "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
       },
       "verified_at": "2026-10-21T02:29:00Z",
-      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "scored_at": "2026-11-19T00:29:07.488797+00:00",
       "campaign_evaluation": null
     },
     {
@@ -939,7 +937,7 @@
         "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
       },
       "verified_at": "2026-10-22T10:14:00Z",
-      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "scored_at": "2026-11-19T00:29:07.488797+00:00",
       "campaign_evaluation": null
     },
     {
@@ -1006,7 +1004,7 @@
       "price_jpy": null,
       "verification_records": {
         "target_plan_name": "Cursor Premium (The X Subscription)",
-        "fetched_at": "2026-10-22T10:13:00Z",
+        "fetched_at": "2026-11-14T10:00:00Z",
         "currency_basis": "USD表示 (Premium $30/mo)",
         "quotes": {
           "payment": "Premium $30/mo 4x Plus (https://cursor.com/help/account-and-billing/pricing)",
@@ -1020,8 +1018,8 @@
         "cycle_type": "weekly",
         "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
       },
-      "verified_at": "2026-10-22T10:13:00Z",
-      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "verified_at": "2026-11-14T10:00:00Z",
+      "scored_at": "2026-11-19T00:29:07.488797+00:00",
       "campaign_evaluation": null,
       "annual": {
         "amount": 300,
@@ -1101,7 +1099,7 @@
       "price_jpy": null,
       "verification_records": {
         "target_plan_name": "Cursor Pro (Legacy)",
-        "fetched_at": "2026-10-22T10:13:00Z",
+        "fetched_at": "2026-11-14T10:00:00Z",
         "currency_basis": "USD表示 (Legacy Pro $20/mo)",
         "quotes": {
           "legacy_status": "Legacy Cursor plans are the plans Cursor sold before The X Subscription. They aren't available to new customers, but existing subscribers keep them until they switch or cancel. Legacy plan Price Comparable plan on The X Subscription ... Pro $20/mo Premium (https://cursor.com/help/account-and-billing/pricing)",
@@ -1113,8 +1111,8 @@
         "cycle_type": "monthly",
         "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
       },
-      "verified_at": "2026-10-22T10:13:00Z",
-      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "verified_at": "2026-11-14T10:00:00Z",
+      "scored_at": "2026-11-19T00:29:07.488797+00:00",
       "campaign_evaluation": null
     },
     {
@@ -1200,7 +1198,7 @@
         "detail_hint": "利用枠の詳細は未確認です。最新の条件は公式情報とアカウントの使用状況をご確認ください。"
       },
       "verified_at": "2026-10-22T15:18:00Z",
-      "scored_at": "2026-10-25T10:11:56.042510+00:00",
+      "scored_at": "2026-11-19T00:29:07.488797+00:00",
       "campaign_evaluation": null
     }
   ]

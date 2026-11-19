@@ -145,6 +145,14 @@
       "verificationNote": "2026-11-16 公式pricing確認: ページ・プラン名・FAQ（個人Goはmonthly plans）は確定。Go/Plus/Proの$数値はJS動的描画で原文取得不可=要確認"
     },
     "perplexity-pro": {
+      "annual": {
+        "amount": 200,
+        "currency": "USD",
+        "period": "year",
+        "sourceUrl": "https://www.perplexity.ai/hub",
+        "confirmedAt": "2026-11-16",
+        "note": "公式FAQ原文: Perplexity Pro is $20/month or $200/year"
+      },
       "hasDeal": false,
       "badge": "💰 Pro $20/月・$200/年（2026-11-16公式FAQ原文確定）/ 学割は要確認",
       "tag": "年払$200・学割最大1年無料は公式原文で確認できず（要確認）",

@@ -856,7 +856,15 @@
       provider: 'Perplexity AI',
       priceUSD: 20,
       priceLabel: '$20 / 月',
-      priceNote: '年払いは$200/年 (月$16.67)',
+      priceNote: '年払い $200/年（公式FAQ）',
+      annual: {
+        amount: 200,
+        currency: 'USD',
+        period: 'year',
+        sourceUrl: 'https://www.perplexity.ai/hub',
+        confirmedAt: '2026-11-16',
+        note: '公式FAQ原文: Perplexity Pro is $20/month or $200/year'
+      },
       apiEquivalent: '💡 利用枠: Pro検索300回/日 ＋ 月$5 APIクレジット',
       tokenRefresh: {
         type: 'auto',
@@ -1689,6 +1697,30 @@
     return '';
   }
 
+  /** tier JSON / プラン定義 / deals の annual を解決（evalInfo を最優先） */
+  function resolveAnnualInfo(plan, evalInfo) {
+    if (evalInfo && evalInfo.annual && typeof evalInfo.annual.amount === 'number') {
+      return evalInfo.annual;
+    }
+    if (plan && plan.annual && typeof plan.annual.amount === 'number') {
+      return plan.annual;
+    }
+    const deal = resolveDealInfo(plan.id);
+    if (deal && deal.annual && typeof deal.annual.amount === 'number') {
+      return deal.annual;
+    }
+    return null;
+  }
+
+  /** 年払い表示文（annual がある場合のみ・派生の月換算は含めない） */
+  function buildAnnualNote(annualInfo) {
+    if (!annualInfo || typeof annualInfo.amount !== 'number') return '';
+    const unit = annualInfo.currency === 'USD' ? '$' : (annualInfo.currency || '');
+    const periodJa = annualInfo.period === 'year' ? '/年' : (annualInfo.period === 'month' ? '/月' : ('/' + (annualInfo.period || '')));
+    const aNote = (typeof annualInfo.note === 'string' && annualInfo.note.trim()) ? `（${annualInfo.note.trim()}）` : '';
+    return `年払い ${unit}${annualInfo.amount}${periodJa}${aNote}。`;
+  }
+
   /**
    * 日本時間（Asia/Tokyo）の今日を YYYY-MM-DD で返す。
    * テスト用に window.__TODAY__ が YYYY-MM-DD 形式で注入されていればそれを優先する。
@@ -2046,11 +2078,15 @@
 
       // ステージ31: chat-onlyプラン（tier評価対象外・evalInfoなし）も価格セルに参考情報（確認日・要確認・出典URL）を表示
       if (!evalInfo && plan.planGroup === 'chat-only') {
+        const refParts = [];
+        const annualLine = buildAnnualNote(resolveAnnualInfo(plan, null));
+        if (annualLine) refParts.push(annualLine);
         const refDealNote = buildDealNote(resolveDealInfo(plan.id));
-        if (refDealNote) {
+        if (refDealNote) refParts.push(refDealNote);
+        if (refParts.length) {
           const refDiv = document.createElement('div');
           refDiv.className = 'tier-meta-row sub-reference-detail';
-          refDiv.textContent = refDealNote;
+          refDiv.textContent = refParts.join(' ');
           tdPriceDeal.appendChild(refDiv);
         }
       }
@@ -2183,15 +2219,7 @@
           ax1.appendChild(ax1Lbl);
           ax1.appendChild(ax1Val);
           ax1.appendChild(ax1ConstNote);
-          // ステージ32: 年払い表示を一般化（tier JSON の annual フィールドのデータ駆動・フィールド欠如プランは非表示）
-          let annualNote = '';
-          const annualInfo = evalInfo.annual;
-          if (annualInfo && typeof annualInfo.amount === 'number') {
-            const unit = annualInfo.currency === 'USD' ? '$' : (annualInfo.currency || '');
-            const periodJa = annualInfo.period === 'year' ? '/年' : (annualInfo.period === 'month' ? '/月' : ('/' + (annualInfo.period || '')));
-            const aNote = (typeof annualInfo.note === 'string' && annualInfo.note.trim()) ? `（${annualInfo.note.trim()}）` : '';
-            annualNote = `年払い ${unit}${annualInfo.amount}${periodJa}${aNote}。`;
-          }
+          const annualNote = buildAnnualNote(resolveAnnualInfo(plan, evalInfo));
           // ステージ31: 参考情報生成は共通ヘルパーへ移行（ステージ30と同一文言・データ駆動・最小変更）
           const dealNoteText = buildDealNote(resolveDealInfo(plan.id));
           const dealNote = dealNoteText ? ` ${dealNoteText}` : '';
