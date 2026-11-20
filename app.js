@@ -114,6 +114,73 @@
     el.hidden = dataLoadStatus.tier && dataLoadStatus.campaigns;
   }
 
+  /** ISO文字列をミリ秒へ（deals_live.updatedAt はタイムゾーン無し＝実行環境ローカルとして解釈） */
+  function parseTimestampMs(value) {
+    if (value == null || typeof value !== 'string') return NaN;
+    const t = Date.parse(value.trim());
+    return Number.isFinite(t) ? t : NaN;
+  }
+
+  /** Asia/Tokyo の YYYY-MM-DD HH:mm JST */
+  function formatJstFromMs(ms) {
+    if (!Number.isFinite(ms)) return null;
+    const parts = new Intl.DateTimeFormat('ja-JP', {
+      timeZone: 'Asia/Tokyo',
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    }).formatToParts(new Date(ms));
+    const pick = (type) => (parts.find(p => p.type === type) || {}).value || '';
+    return `${pick('year')}-${pick('month')}-${pick('day')} ${pick('hour')}:${pick('minute')} JST`;
+  }
+
+  function collectTierTimestampMs(tier) {
+    const ms = [];
+    if (!tier || typeof tier !== 'object') return ms;
+    const gen = parseTimestampMs(tier.generated_at);
+    if (Number.isFinite(gen)) ms.push(gen);
+    if (Array.isArray(tier.plans)) {
+      tier.plans.forEach((p) => {
+        if (p && typeof p.scored_at === 'string') {
+          const m = parseTimestampMs(p.scored_at);
+          if (Number.isFinite(m)) ms.push(m);
+        }
+      });
+    }
+    return ms;
+  }
+
+  /** subscriptions_tier（generated_at・scored_at）と deals_live.updatedAt の最大を JST 表示 */
+  async function updateLastUpdatedDisplay() {
+    const el = document.getElementById('data-last-updated');
+    if (!el) return;
+    const candidates = collectTierTimestampMs(tierEvaluationData);
+    try {
+      const dealsJson = await fetchJsonWithTimeout('deals_live.json');
+      if (dealsJson && typeof dealsJson.updatedAt === 'string') {
+        const m = parseTimestampMs(dealsJson.updatedAt);
+        if (Number.isFinite(m)) candidates.push(m);
+      }
+    } catch (_) {
+      /* オフライン時は tier のみで算出 */
+    }
+    if (candidates.length === 0) {
+      el.hidden = true;
+      el.textContent = '';
+      return;
+    }
+    const label = formatJstFromMs(Math.max(...candidates));
+    if (!label) {
+      el.hidden = true;
+      return;
+    }
+    el.textContent = `データ最終更新: ${label}（tier採点・deals・生成日時の最新）`;
+    el.hidden = false;
+  }
+
   // サブスク区分フィルタ判定（一覧の絞り込みと分類ボタンの件数計算で共用）
   function planMatchesSubTier(plan, key) {
     if (key === 'agent-all') return Boolean(plan.hasAgent);
@@ -180,6 +247,7 @@
       dataLoadStatus.tier = false;
     }
     updateDataLoadError();
+    void updateLastUpdatedDisplay();
   }
 
   function validateDealsData(data) {
@@ -1378,6 +1446,7 @@
             syncTimeISO: nowISO
           };
           applyDealsData();
+          void updateLastUpdatedDisplay();
           try {
             localStorage.setItem(DEALS_CACHE_STORAGE_KEY, JSON.stringify(dealsJson));
             localStorage.setItem(DEALS_SYNC_TIME_KEY, nowISO);

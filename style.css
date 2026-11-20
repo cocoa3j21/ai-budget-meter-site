@@ -1404,6 +1404,18 @@ body {
 
 
 
+.footer-last-updated {
+
+  font-size: 0.78rem;
+
+  color: var(--color-text-muted);
+
+  margin: 4px 0 0;
+
+}
+
+
+
 .footer-links-box {
 
   display: flex;
